@@ -1,5 +1,4 @@
-# Naziv projekta
-Iznajmljivanje vozila
+# Iznajmljivanje vozila
 
 ## Projektni tim
 
@@ -22,7 +21,7 @@ F03 | Ispis u PDF | Ako korisnik nakon završetka iznajmljivanja želi nekako sp
 F04 | Profil | Mogućnost pristupa vlastitom profilu te izmjena podataka kao što su ime i prezime, datum rođenja te eventualno karticu ako je to korisnik odlučio zapamtiti kroz aplikaciju | Luka Pamer
 F05 | Izbornik | Mogućnost pregleda svih dostupnih vozila te odabiranje istih, također dodatni izbornici koji bi vodili na druge stavke aplikacije | Luka Pamer
 F06 | Postavke | Mogućnost promjene aplikacijske teme, jezika kako bi se unaprijedilo korisničko iskustvo. | Luka Pamer
-F07 | Filtriranje | S obzirom da se u izborniku nalazi dosta elemenata omogućit ćemo korisnicima da sortiraju popis vozila ili putem tražilice traže točno neko vozilo. | MMatej Franjić
+F07 | Filtriranje | S obzirom da se u izborniku nalazi dosta elemenata omogućit ćemo korisnicima da sortiraju popis vozila ili putem tražilice traže točno neko vozilo. | Matej Franjić
 F08 | Iznajmljivanje | Mogućnost korisnika da iznajmi vozilo kroz cijeli proces te na kraju zapis da je vozilo iznajmljeno te račun. | Matej Franjić
 F09 | Podrška | Rubrika sa često postavljenim pitanjima u vezi računa i ostalih nejasnoća. | Matej Franjić
 
