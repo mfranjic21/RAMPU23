@@ -15,13 +15,13 @@ Ovim projektom bi radili na izradi mobilne aplikacije za iznajmljivanje vozila k
 
 Oznaka | Naziv | Kratki opis | Odgovorni član tima
 ------ | ----- | ----------- | -------------------
-F01 | Login | Za pristup aplikaciji potrebno se ulogirati, ovisno o tome kojim podacima se ulogiramo takva ćemo prava dobiti, administrator će imat pravo uređivanja i dodavanja novih vozila dok korisnik može samo iznajmiti. | Marko Saško
-F02 | Dodavanje | Ako se u aplikaciji prijavimo kao admin dobit ćemo mogućnost uređivanja/dodavanja novih vozila koji će se nakon toga vidjeti u glavnom izborniku kao nova vozila za iznajmljivanje. | Marko Saško
+F01 | Login | Za pristup aplikaciji potrebno se ulogirati nakon toga korisnik ima pregled svih vozila i mogućnost iznajmljivanja. | Marko Saško
+F02 | Social link | Mogućnost login-a kroz društvene mreže. | Marko Saško
 F03 | Ispis u PDF | Ako korisnik nakon završetka iznajmljivanja želi nekako spremiti svoj ugovor o iznajmljivanju vozila, imat će mogućnost spremanja računa u PDF formatu na svoj mobilni uređaj. | Marko Saško
 F04 | Profil | Mogućnost pristupa vlastitom profilu te izmjena podataka kao što su ime i prezime, datum rođenja te eventualno karticu ako je to korisnik odlučio zapamtiti kroz aplikaciju | Luka Pamer
 F05 | Izbornik | Mogućnost pregleda svih dostupnih vozila te odabiranje istih, također dodatni izbornici koji bi vodili na druge stavke aplikacije | Luka Pamer
 F06 | Postavke | Mogućnost promjene aplikacijske teme, jezika kako bi se unaprijedilo korisničko iskustvo. | Luka Pamer
-F07 | Filtriranje | S obzirom da se u izborniku nalazi dosta elemenata omogućit ćemo korisnicima da sortiraju popis vozila ili putem tražilice traže točno neko vozilo. | Matej Franjić
+F07 | Filtriranje | S obzirom da se u izborniku nalazi dosta elemenata omogućit će se korisnicima da sortiraju popis vozila ili putem tražilice traže točno neko vozilo. | Matej Franjić
 F08 | Iznajmljivanje | Mogućnost korisnika da iznajmi vozilo kroz cijeli proces te na kraju zapis da je vozilo iznajmljeno te račun. | Matej Franjić
 F09 | Podrška | Rubrika sa često postavljenim pitanjima u vezi računa i ostalih nejasnoća. | Matej Franjić
 
