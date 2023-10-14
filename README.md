@@ -26,7 +26,7 @@ F08 | Iznajmljivanje | Mogućnost korisnika da iznajmi vozilo kroz cijeli proces
 F09 | Podrška | Rubrika sa često postavljenim pitanjima u vezi računa i ostalih nejasnoća. | Matej Franjić
 
 ## Tehnologije i oprema
-Tehnologjie koje ćemo koristiti su Github i git za verzioniranje, GitWiki za pisanje jednostavne dokumentacije te praćenje kroz GitHub projects. Za samo programiranje softvera ćemo koristiti programski jezik Kotlin kroz sučelje Android Studia (Apache 2.0 licenca). Bazu podataka bi koristili kroz SqLite. Rješenje će biti namijenjeno isključivo za određene verzije Androida.
+Tehnologjie koje ćemo koristiti su Github i git za verzioniranje, GitWiki za pisanje jednostavne dokumentacije te praćenje kroz GitHub projects. Za samo programiranje softvera ćemo koristiti programski jezik Kotlin kroz sučelje Android Studia (Apache 2.0 licenca). Bazu podataka bi koristili kroz SqLite i MySQL Workbench. Rješenje će biti namijenjeno isključivo za određene verzije Androida.
 
 ## Baza podataka i web server
 Koristili bi bazu podataka putem SqLite-a.
