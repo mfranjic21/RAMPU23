@@ -18,10 +18,10 @@ Oznaka | Naziv | Kratki opis | Odgovorni član tima
 F01 | Login | Za pristup aplikaciji potrebno se ulogirati nakon toga korisnik ima pregled svih vozila i mogućnost iznajmljivanja. | Marko Saško
 F02 | Pretraga vozila | Omogućiti korisnicima pretraživanje dostupnih vozila prema lokaciji, datumu i vremenskom periodu. | Marko Saško
 F03 | Obavijesti i potvrde | Slanje obavijesti o rezervacijama, potvrdama, podsjetnicima i promocijama putem push obavijesti ili e-pošte. | Marko Saško
-F04 | Upravlajanje profilom | Mogućnost pristupa vlastitom profilu te izmjena podataka kao što su ime i prezime, datum rođenja te eventualno karticu ako je to korisnik odlučio zapamtiti kroz aplikaciju | Luka Pamer
+F04 | Upravljanje profilom | Mogućnost pristupa vlastitom profilu te izmjena podataka kao što su ime i prezime, datum rođenja, OIB, email, broj telefona. | Luka Pamer
 F05 | Integracija s kartama i navigacijom | Povezati aplikaciju s uslugama kartografije kako bi korisnici mogli lako pronaći lokacije vozila. | Luka Pamer
 F06 | Postavke | Mogućnost promjene aplikacijske teme, jezika kako bi se unaprijedilo korisničko iskustvo. | Luka Pamer
-F07 | Filtriranje | S obzirom da se u izborniku nalazi dosta elemenata omogućit će se korisnicima da sortiraju popis vozila ili putem tražilice traže točno neko vozilo. | Matej Franjić
+F07 | Ocjenjivanje i recenzije | Dopustiti korisnicima da ocjenjuju i ostavljaju recenzije vozila i iskustava s iznajmljivanjem. | Matej Franjić
 F08 | Rezervacije | Dopustiti korisnicima da rezerviraju vozilo za određeni datum i vrijeme te omogućite im praćenje svojih rezervacija. | Matej Franjić
 F09 | Podrška | Rubrika sa često postavljenim pitanjima u vezi računa i ostalih nejasnoća. | Matej Franjić
 
