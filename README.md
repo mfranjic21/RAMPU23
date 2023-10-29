@@ -30,3 +30,5 @@ Tehnologjie koje ćemo koristiti su Github i git za verzioniranje, GitWiki za pi
 
 ## Baza podataka i web server
 Koristili bi bazu podataka putem SqLite-a.
+
+//proba
