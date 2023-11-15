@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/aplikacija" >
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="40dp"
+        android:text="Profile"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/profilna"
+        android:layout_width="86dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_account_circle_24" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="72dp"
+        android:text="Odjavi se"
+        android:backgroundTint="#667080"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/podrska"
+        app:layout_constraintVertical_bias="0.788" />
+
+    <TextView
+        android:id="@+id/ispis_mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ivanhorvat@gmail.com"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ime_prezime" />
+
+    <TextView
+        android:id="@+id/ime_prezime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ivan Horvat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profilna" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/aplikacija"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_arrow_back_ios_24" />
+
+    <TextView
+        android:id="@+id/promijeniProfil"
+        android:layout_width="305dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/kontejner"
+        android:fontFamily="@font/mulish"
+        android:padding="12dp"
+        android:text="Postavke profila"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.471"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ispis_mail" />
+
+    <TextView
+        android:id="@+id/promijeniPostavke"
+        android:layout_width="305dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/kontejner"
+        android:fontFamily="@font/mulish"
+        android:padding="12dp"
+        android:text="Postavke aplikacije"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.471"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/promijeniProfil" />
+
+
+    <TextView
+        android:id="@+id/podrska"
+        android:layout_width="305dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/kontejner"
+        android:fontFamily="@font/mulish"
+        android:padding="12dp"
+        android:text="Podrška"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/promijeniPostavke" />
+
+
+    <ImageView
+        android:id="@+id/postavkeProfila_gumb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintBottom_toBottomOf="@+id/promijeniProfil"
+        app:layout_constraintEnd_toEndOf="@+id/promijeniProfil"
+        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintStart_toStartOf="@+id/promijeniProfil"
+        app:layout_constraintTop_toTopOf="@+id/promijeniProfil"
+        app:srcCompat="@drawable/baseline_keyboard_arrow_right_24" />
+
+    <ImageView
+        android:id="@+id/podrska_gumb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/podrska"
+        app:layout_constraintEnd_toEndOf="@+id/podrska"
+        app:layout_constraintHorizontal_bias="0.896"
+        app:layout_constraintStart_toStartOf="@+id/podrska"
+        app:layout_constraintTop_toTopOf="@+id/podrska"
+        app:srcCompat="@drawable/baseline_keyboard_arrow_right_24" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/promijeniPostavke"
+        app:layout_constraintEnd_toEndOf="@+id/promijeniPostavke"
+        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintStart_toStartOf="@+id/promijeniPostavke"
+        app:layout_constraintTop_toTopOf="@+id/promijeniPostavke"
+        app:srcCompat="@drawable/baseline_keyboard_arrow_right_24" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
