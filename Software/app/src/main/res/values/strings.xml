@@ -3,4 +3,11 @@
     <string name="natrag">Natrag</string>
     <string name="profil">Profil</string>
     <string name="korisnickaPodrska">Korisnička podrška</string>
+    <string name="postaviNamPitanje">Postavi nam pitanje</string>
+    <string name="pitanjeKorisnickojSluzbi">Postavi pitanje našoj korisničkoj podršci</string>
+    <string name="faq">FAQ</string>
+    <string name="postaviPitanjeView">Idi na postaviPitanjeView</string>
+    <string name="odgovor">Odgovor</string>
+    <string name="pitanjeTekst">Pitanje?</string>
+    <string name="pitanjeBroj">Pitanje #n</string>
 </resources>
