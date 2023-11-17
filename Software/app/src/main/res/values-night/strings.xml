@@ -1,5 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Iznajmljivanje vozila</string>
     <string name="login_sign_in">PRIJAVI SE</string>
     <string name="login_create_new_account">Kreiraj novi račun</string>
     <string name="login_person_description">ikona osobe</string>
