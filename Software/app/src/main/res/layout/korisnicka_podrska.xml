@@ -43,19 +43,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/natrag" />
 
-    <TextView
+    <Button
         android:id="@+id/faq"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/arrow_border"
         android:fontFamily="@font/mulish"
+        android:padding="6dp"
         android:text="@string/faq"
-        android:textAllCaps="false"
         android:textColor="#000000"
-        android:textSize="28sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/postaviPitanje" />
+
+    <Button
+        android:id="@+id/vasaPitanja"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@android:color/transparent"
+        android:fontFamily="@font/mulish"
+        android:padding="6dp"
+        android:text="@string/vasaPitanja"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/faq"
         app:layout_constraintTop_toBottomOf="@+id/postaviPitanje" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -73,7 +90,6 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/rounded_corner"
         android:fontFamily="@font/mulish"
@@ -84,20 +100,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/korisnickaPodrska" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <EditText
+        android:inputType="text"
+        android:id="@+id/inputPitanja"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="12dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        android:background="@color/white"
         android:fontFamily="@font/mulish"
-        android:text="@string/pitanjeKorisnickojSluzbi"
+        android:hint="@string/pitanjeKorisnickojSluzbi"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/postaviPitanje"
-        app:layout_constraintStart_toStartOf="@+id/postaviPitanje" />
+        app:layout_constraintEnd_toStartOf="@+id/posaljiNovoPitanje"
+        app:layout_constraintStart_toStartOf="@+id/postaviPitanje"
+        app:layout_constraintTop_toTopOf="@+id/postaviPitanje"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <ImageButton
-        android:id="@+id/goToPostaviPitanjeView"
+        android:id="@+id/posaljiNovoPitanje"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginEnd="12dp"
@@ -108,5 +131,6 @@
         app:srcCompat="@drawable/baseline_arrow_forward_24"
         android:contentDescription="@string/postaviPitanjeView"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
