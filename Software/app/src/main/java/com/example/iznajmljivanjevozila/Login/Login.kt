@@ -5,29 +5,37 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.example.iznajmljivanjevozila.MainActivity
 import com.example.iznajmljivanjevozila.R
 import com.example.iznajmljivanjevozila.helpers.MockDataLoader
 
 class Login : AppCompatActivity() {
-    lateinit var btnLogin: Button
-    lateinit var etUsername: EditText
-    lateinit var etPassword: EditText
+    private lateinit var btnLogin: Button
+    private lateinit var tvRegister: TextView
+    private lateinit var etUsername: EditText
+    private lateinit var etPassword: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
         btnLogin = findViewById(R.id.btn_login)
+        tvRegister = findViewById(R.id.tv_login_register)
         etUsername = findViewById(R.id.et_login_username)
         etPassword = findViewById(R.id.et_login_password)
 
         btnLogin.setOnClickListener{
-            LoginUser(etUsername.text.toString(), etPassword.text.toString())
+            loginUser(etUsername.text.toString(), etPassword.text.toString())
+        }
+
+        tvRegister.setOnClickListener {
+            val intent = Intent(this, Register::class.java)
+            startActivity(intent)
         }
     }
 
-    private fun LoginUser(username : String, password: String){
+    private fun loginUser(username : String, password: String){
         val users = MockDataLoader.getUsers()
 
         if(users.any{user -> user.username == username && user.password == password}){
