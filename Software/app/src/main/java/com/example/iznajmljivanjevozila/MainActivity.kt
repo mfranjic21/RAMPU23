@@ -19,15 +19,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
-        val korisnickaPodrskaButton = findViewById<Button>(R.id.korisnickaPodrska)
-
-        korisnickaPodrskaButton.setOnClickListener {
-
-            val intent = Intent (this, KorisnickaPodrska::class.java)
-            startActivity(intent)
-        }
-
         val profil = findViewById<ImageButton>(R.id.profil_pocetna)
 
         profil.setOnClickListener {
