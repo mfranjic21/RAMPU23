@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/aplikacija">
 
 
     <TextView
@@ -29,7 +30,7 @@
         app:srcCompat="@drawable/baseline_account_circle_24" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/odjava"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="72dp"

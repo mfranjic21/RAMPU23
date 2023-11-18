@@ -25,7 +25,7 @@ class KorisnickaPodrska : AppCompatActivity() {
         fillVasaPitanja()
 
         natragButton.setOnClickListener {
-            val intent = Intent (this, MainActivity::class.java)
+            val intent = Intent (this, Profil::class.java)
             startActivity(intent)
         }
 
