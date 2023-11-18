@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login_sign_in">PRIJAVI SE</string>
+    <string name="login_create_new_account">Kreiraj novi račun</string>
+    <string name="login_person_description">ikona osobe</string>
+    <string name="hint_username">korisničko ime</string>
+    <string name="hint_password">lozinka</string>
+    <string name="hint_email">email adresa</string>
+    <string name="hint_lastname">prezime</string>
+    <string name="hint_firstname">ime</string>
+    <string name="register_cancel">Odustani</string>
+    <string name="register">Registriraj se</string>
+</resources>

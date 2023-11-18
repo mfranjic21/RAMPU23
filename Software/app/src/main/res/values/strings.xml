@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">Iznajmljivanje vozila</string>
+    <string name="login_sign_in">PRIJAVI SE</string>
+    <string name="login_create_new_account">Kreiraj novi račun</string>
+    <string name="login_person_description">ikona osobe</string>
+    <string name="hint_username">korisničko ime</string>
+    <string name="hint_password">lozinka</string>
+    <string name="hint_email">email adresa</string>
+    <string name="hint_lastname">prezime</string>
+    <string name="hint_firstname">ime</string>
+    <string name="register_cancel">Odustani</string>
+    <string name="register">Registriraj se</string>
     <string name="natrag">Natrag</string>
     <string name="profil">Profil</string>
     <string name="korisnickaPodrska">Korisnička podrška</string>
