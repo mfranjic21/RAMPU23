@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.example.iznajmljivanjevozila.Login.Login
 import com.example.iznajmljivanjevozila.Login.SessionManager
 import android.widget.Button
+import android.widget.ImageButton
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,5 +27,14 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent (this, KorisnickaPodrska::class.java)
             startActivity(intent)
         }
+
+        val profil = findViewById<ImageButton>(R.id.profil_pocetna)
+
+        profil.setOnClickListener {
+
+            val intent = Intent (this, Profil::class.java)
+            startActivity(intent)
+        }
     }
+
 }
