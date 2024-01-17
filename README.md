@@ -20,7 +20,7 @@ F02 | Pretraga vozila | Omogućiti korisnicima pretraživanje dostupnih vozila p
 F03 | Obavijesti i potvrde | Slanje obavijesti o rezervacijama, potvrdama, podsjetnicima i promocijama putem push obavijesti ili e-pošte. | Marko Saško
 F04 | Upravljanje profilom | Mogućnost pristupa vlastitom profilu te izmjena podataka kao što su ime i prezime, datum rođenja, OIB, email, broj telefona. | Luka Pamer
 F05 | Integracija s kartama i navigacijom | Povezati aplikaciju s uslugama kartografije kako bi korisnici mogli lako pronaći lokacije vozila. | Luka Pamer
-F06 | Postavke | Mogućnost promjene aplikacijske teme, jezika kako bi se unaprijedilo korisničko iskustvo. | Luka Pamer
+F06 | Postavke | Mogućnost promjene aplikacijske teme kako bi se unaprijedilo korisničko iskustvo. | Luka Pamer
 F07 | Ocjenjivanje i recenzije | Dopustiti korisnicima da ocjenjuju i ostavljaju recenzije vozila i iskustava s iznajmljivanjem. | Matej Franjić
 F08 | Rezervacije | Dopustiti korisnicima da rezerviraju vozilo za određeni datum i vrijeme te omogućite im praćenje svojih rezervacija. | Matej Franjić
 F09 | Podrška | Rubrika sa često postavljenim pitanjima u vezi računa i ostalih nejasnoća. | Matej Franjić
