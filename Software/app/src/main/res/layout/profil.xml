@@ -105,7 +105,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/promijeniProfil" />
 
-
     <TextView
         android:id="@+id/podrska"
         android:layout_width="305dp"
@@ -120,6 +119,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/promijeniPostavke" />
+
+    <TextView
+        android:id="@+id/mojeRezervacije"
+        android:layout_width="305dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/kontejner"
+        android:fontFamily="@font/mulish"
+        android:padding="12dp"
+        android:text="Moje rezervacije"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.471"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/podrska" />
 
 
     <ImageView
@@ -154,6 +169,17 @@
         app:layout_constraintHorizontal_bias="0.907"
         app:layout_constraintStart_toStartOf="@+id/promijeniPostavke"
         app:layout_constraintTop_toTopOf="@+id/promijeniPostavke"
+        app:srcCompat="@drawable/baseline_keyboard_arrow_right_24" />
+
+    <ImageView
+        android:id="@+id/btnMojeRezervacije"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/mojeRezervacije"
+        app:layout_constraintEnd_toEndOf="@+id/mojeRezervacije"
+        app:layout_constraintHorizontal_bias="0.896"
+        app:layout_constraintStart_toStartOf="@+id/mojeRezervacije"
+        app:layout_constraintTop_toTopOf="@+id/mojeRezervacije"
         app:srcCompat="@drawable/baseline_keyboard_arrow_right_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

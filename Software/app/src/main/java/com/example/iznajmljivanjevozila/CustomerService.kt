@@ -6,7 +6,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -14,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 class KorisnickaPodrska : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.korisnicka_podrska)
+        setContentView(R.layout.customer_service)
 
         val natragButton = findViewById<ImageButton>(R.id.natrag)
         val faqButton = findViewById<Button>(R.id.faq)
@@ -33,7 +32,7 @@ class KorisnickaPodrska : AppCompatActivity() {
             faqButton.setBackgroundResource(R.drawable.arrow_border)
             vasaPitanjaButton.setBackgroundResource(android.R.color.transparent)
 
-            val faqPitanja = findViewById<RecyclerView>(R.id.faqPitanja)
+            val faqPitanja = findViewById<RecyclerView>(R.id.faqQuestions)
             faqPitanja.layoutManager = LinearLayoutManager(this)
             faqPitanja.adapter = FaqAdapter(faqList)
         }
@@ -42,9 +41,9 @@ class KorisnickaPodrska : AppCompatActivity() {
             vasaPitanjaButton.setBackgroundResource(R.drawable.arrow_border)
             faqButton.setBackgroundResource(android.R.color.transparent)
 
-            val faqPitanja = findViewById<RecyclerView>(R.id.faqPitanja)
+            val faqPitanja = findViewById<RecyclerView>(R.id.faqQuestions)
             faqPitanja.layoutManager = LinearLayoutManager(this)
-            faqPitanja.adapter = FaqAdapter(vasaPitanja)
+            faqPitanja.adapter = FaqAdapter(yourQuestions)
         }
 
         posaljiNovoPitanjeButton.setOnClickListener {
@@ -55,44 +54,39 @@ class KorisnickaPodrska : AppCompatActivity() {
 
             if (inputPitanjaText.text.toString() != "") {
                 dodajPitanje(inputPitanjaText.text.toString())
-                val faqPitanja = findViewById<RecyclerView>(R.id.faqPitanja)
+                val faqPitanja = findViewById<RecyclerView>(R.id.faqQuestions)
                 faqPitanja.layoutManager = LinearLayoutManager(this)
-                faqPitanja.adapter = FaqAdapter(vasaPitanja)
+                faqPitanja.adapter = FaqAdapter(yourQuestions)
             }
 
             inputPitanjaText.setText("")
         }
 
-        //Temporary Light Mode
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-
         fillFAQ()
 
-        val faqPitanja = findViewById<RecyclerView>(R.id.faqPitanja)
-        faqPitanja.layoutManager = LinearLayoutManager(this)
-        faqPitanja.adapter = FaqAdapter(faqList)
+        val faqQuestions = findViewById<RecyclerView>(R.id.faqQuestions)
+        faqQuestions.layoutManager = LinearLayoutManager(this)
+        faqQuestions.adapter = FaqAdapter(faqList)
     }
 
     private fun fillFAQ() {
         if (faqList.size == 0) {
-            faqList.add(Pitanja("Pitanje #1", "Pitanje #1 glasi...?", "Odgovor na pitanje #1 je..."))
-            faqList.add(Pitanja("Pitanje #2", "Pitanje #2 glasi...?", "Odgovor na pitanje #2 je..."))
-            faqList.add(Pitanja("Pitanje #3", "Pitanje #3 glasi...?", "Odgovor na pitanje #3 je..."))
-            faqList.add(Pitanja("Pitanje #4", "Pitanje #4 glasi...?", "Odgovor na pitanje #4 je..."))
-            faqList.add(Pitanja("Pitanje #5", "Pitanje #5 glasi...?", "Odgovor na pitanje #5 je..."))
+            for (i in 1..8) {
+                faqList.add(Questions("Pitanje #${i}", "Odgovor na pitanje #${i} je..."))
+            }
         }
     }
 
     private fun fillVasaPitanja() {
-        if (vasaPitanja.size == 0) {
-            vasaPitanja.add(Pitanja("Vaše pitanje #1", "Pitanje #1 glasi...?", "Odgovor na pitanje #1 je..."))
-            vasaPitanja.add(Pitanja("Vaše pitanje #2", "Pitanje #2 glasi...?", "Odgovor na pitanje #2 je..."))
-            vasaPitanja.add(Pitanja("Vaše pitanje #3", "Pitanje #3 glasi...?", "Čeka se odgovor administratora."))
+        if (yourQuestions.size == 0) {
+            yourQuestions.add(Questions("Vaše pitanje #1", "Odgovor na pitanje #1 je..."))
+            yourQuestions.add(Questions("Vaše pitanje #2", "Odgovor na pitanje #2 je..."))
+            yourQuestions.add(Questions("Vaše pitanje #3", "Čeka se odgovor administratora."))
         }
     }
 
     private fun dodajPitanje(pitanje: String) {
-        vasaPitanja.add(Pitanja("Vaše Pitanje #${vasaPitanja.size+1}", "${pitanje}", "Čeka se odgovor administratora."))
+        yourQuestions.add(Questions(pitanje, "Čeka se odgovor administratora."))
     }
 }
 

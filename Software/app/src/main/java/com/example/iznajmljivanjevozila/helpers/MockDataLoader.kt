@@ -23,6 +23,7 @@ object MockDataLoader {
 
 object UsersList{
     var users: MutableList<User> = mutableListOf(
-        User("test_ime","test_prezime", "test@example.com", "test" , "test")
+        User("test_ime","test_prezime", "test@example.com", "test" , "test"),
+        User("admin_ime","admin_prezime", "admin@example.com", "admin" , "admin")
     )
 }

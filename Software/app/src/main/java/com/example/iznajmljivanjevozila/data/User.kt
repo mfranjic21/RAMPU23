@@ -2,7 +2,6 @@ package com.example.iznajmljivanjevozila.data
 
 import android.provider.ContactsContract
 
-
 data class User(
     val firstname: String,
     val lastname: String,

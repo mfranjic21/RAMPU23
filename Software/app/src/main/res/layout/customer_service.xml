@@ -8,8 +8,8 @@
 
     <ImageButton
         android:id="@+id/natrag"
-        android:layout_width="34dp"
-        android:layout_height="39dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/baseline_arrow_back_ios_24"
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/mulish"
         android:text="@string/korisnickaPodrska"
         android:textAllCaps="false"
@@ -54,8 +54,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:backgroundTint="@android:color/transparent"
         android:fontFamily="@font/mulish"
+        android:background="@android:color/transparent"
         android:padding="6dp"
         android:text="@string/vasaPitanja"
         android:textColor="#000000"
@@ -65,7 +65,7 @@
         app:layout_constraintTop_toBottomOf="@+id/postaviPitanje" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/faqPitanja"
+        android:id="@+id/faqQuestions"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
@@ -78,14 +78,16 @@
         android:id="@+id/postaviPitanje"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/rounded_corner"
         android:fontFamily="@font/mulish"
         android:padding="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
         android:text="@string/postaviNamPitanje"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/korisnickaPodrska" />
 

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class FaqAdapter(private val faqList: List<Pitanja>) : RecyclerView.Adapter<FaqViewHolder>() {
+class FaqAdapter(private val faqList: List<Questions>) : RecyclerView.Adapter<FaqViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FaqViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.faq_card_view, parent, false)
@@ -13,9 +13,8 @@ class FaqAdapter(private val faqList: List<Pitanja>) : RecyclerView.Adapter<FaqV
 
     override fun onBindViewHolder(holder: FaqViewHolder, position: Int) {
         val faq = faqList[position]
-        holder.brojPitanja.text = faq.brojPitanja
-        holder.naslovPitanja.text = faq.pitanje
-        holder.odgovorPitanja.text = faq.odgovor
+        holder.naslovPitanja.text = faq.question
+        holder.odgovorPitanja.text = faq.answer
     }
 
     override fun getItemCount(): Int {

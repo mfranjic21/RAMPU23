@@ -21,4 +21,14 @@
     <string name="pitanjeTekst">Pitanje?</string>
     <string name="pitanjeBroj">Pitanje #n</string>
     <string name="vasaPitanja">Vaša pitanja</string>
+    <string name="appName">Iznajmljivanje vozila</string>
+    <string name="car_mark">Car mark</string>
+    <string name="car_model">Car model</string>
+    <string name="car_year">Car year</string>
+    <string name="car_Grade">Car grade</string>
+    <string name="reserve_vehicle">Rezerviraj vozilo</string>
+    <string name="vehicle_reserved">Rezervirano</string>
+    <string name="car_Details">Car details</string>
+    <string name="myReservations">Moje rezervacije</string>
+    <string name="listEmpty">Niste rezervirali niti jedno vozilo</string>
 </resources>
