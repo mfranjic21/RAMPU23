@@ -1,18 +1,20 @@
 package com.example.iznajmljivanjevozila
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
 import com.example.iznajmljivanjevozila.Login.Login
 import com.example.iznajmljivanjevozila.Login.SessionManager
 import android.widget.Button
 import android.widget.ImageButton
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
 
         if(!SessionManager.isLoggedIn()){
             val intent = Intent(this, Login::class.java)
@@ -26,6 +28,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent (this, Profil::class.java)
             startActivity(intent)
         }
-    }
 
+    }
 }

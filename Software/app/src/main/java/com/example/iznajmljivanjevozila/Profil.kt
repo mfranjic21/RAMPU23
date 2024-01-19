@@ -40,6 +40,12 @@ class Profil : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val postavkeAplikacije = findViewById<TextView>(R.id.promijeniPostavke)
+        postavkeAplikacije.setOnClickListener {
+            val intent = Intent(this, PostavkeAplikacije::class.java)
+            startActivity(intent)
+        }
+
 
 
     }

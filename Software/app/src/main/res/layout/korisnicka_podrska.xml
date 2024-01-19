@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/aplikacija">
+    style="@style/ScreenBackground">
 
     <ImageButton
         android:id="@+id/natrag"
-        android:layout_width="34dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="28dp"
+        android:layout_width="41dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/baseline_arrow_back_ios_24"
         android:contentDescription="@string/natrag"
@@ -19,18 +19,18 @@
 
     <TextView
         android:id="@+id/korisnickaPodrska"
+        style="@style/TextColorLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/mulish"
         android:text="@string/korisnickaPodrska"
         android:textAllCaps="false"
-        android:textColor="#000000"
         android:textSize="28sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/natrag" />
+        app:layout_constraintStart_toEndOf="@+id/natrag"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/faq"
@@ -42,7 +42,7 @@
         android:fontFamily="@font/mulish"
         android:padding="6dp"
         android:text="@string/faq"
-        android:textColor="#000000"
+        style="@style/ScreenBackground"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +58,7 @@
         android:fontFamily="@font/mulish"
         android:padding="6dp"
         android:text="@string/vasaPitanja"
-        android:textColor="#000000"
+        style="@style/ScreenBackground"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/faq"
@@ -76,16 +76,20 @@
 
     <TextView
         android:id="@+id/postaviPitanje"
+        style="@style/ScreenBackground"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_corner"
         android:fontFamily="@font/mulish"
         android:padding="12dp"
         android:text="@string/postaviNamPitanje"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/korisnickaPodrska" />
 
@@ -102,6 +106,7 @@
         android:fontFamily="@font/mulish"
         android:hint="@string/pitanjeKorisnickojSluzbi"
         android:textSize="16sp"
+        style="@style/ScreenBackground"
         app:layout_constraintBottom_toBottomOf="@+id/postaviPitanje"
         app:layout_constraintEnd_toStartOf="@+id/posaljiNovoPitanje"
         app:layout_constraintStart_toStartOf="@+id/postaviPitanje"

@@ -63,8 +63,6 @@ class KorisnickaPodrska : AppCompatActivity() {
             inputPitanjaText.setText("")
         }
 
-        //Temporary Light Mode
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         fillFAQ()
 
