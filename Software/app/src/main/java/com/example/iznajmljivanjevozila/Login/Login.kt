@@ -41,6 +41,12 @@ class Login : AppCompatActivity() {
         if(users.any{user -> user.username == username && user.password == password}){
             SessionManager.setLoggedIn(true)
 
+            for (user in users) {
+                if (user.username == username && user.password == password) {
+                    SessionManager.logginUser(user)
+                }
+            }
+
             showToast("Prijava uspješna")
 
             val intent = Intent(this, MainActivity::class.java)

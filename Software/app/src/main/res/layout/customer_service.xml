@@ -8,8 +8,8 @@
 
     <ImageButton
         android:id="@+id/natrag"
-        android:layout_width="41dp"
-        android:layout_height="41dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/baseline_arrow_back_ios_24"
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:backgroundTint="@android:color/transparent"
+        android:background="@android:color/transparent"
         android:fontFamily="@font/mulish"
         android:padding="6dp"
         android:text="@string/vasaPitanja"
@@ -64,8 +64,9 @@
         app:layout_constraintStart_toEndOf="@+id/faq"
         app:layout_constraintTop_toBottomOf="@+id/postaviPitanje" />
 
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/faqPitanja"
+        android:id="@+id/faqQuestions"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
@@ -128,3 +129,7 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+

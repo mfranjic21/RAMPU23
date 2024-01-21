@@ -19,10 +19,18 @@ object MockDataLoader {
         val users = UsersList.users
         users.add(user)
     }
+
+    fun updateUser(updatedUser: User, oldUsername: String) {
+        val users = UsersList.users
+        val existingUserIndex = users.indexOfFirst { it.username == oldUsername }
+
+        users[existingUserIndex] = updatedUser
+    }
 }
 
 object UsersList{
     var users: MutableList<User> = mutableListOf(
-        User("test_ime","test_prezime", "test@example.com", "test" , "test")
+        User("test_ime","test_prezime", "test@example.com", "test" , "test"),
+        User("admin_ime","admin_prezime", "admin@example.com", "admin" , "admin")
     )
 }

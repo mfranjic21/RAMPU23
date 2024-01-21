@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="false"
+        app:cardElevation="0dp"
+        app:cardCornerRadius="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner">
+
+            <ImageView
+                android:id="@+id/phtCarPhoto"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="12dp"/>
+
+            <TextView
+                android:id="@+id/txtCarMark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextColorLabel"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_toEndOf="@+id/phtCarPhoto"
+                android:text="@string/car_mark"
+                android:fontFamily="@font/mulish"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/txtCarModel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextColorLabel"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="12dp"
+                android:layout_toEndOf="@+id/phtCarPhoto"
+                android:layout_below="@id/txtCarMark"
+                android:text="@string/car_model"
+                android:fontFamily="@font/mulish"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtCarYear"
+                android:layout_width="wrap_content"
+                style="@style/TextColorLabel"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="12dp"
+                android:layout_toEndOf="@+id/phtCarPhoto"
+                android:layout_below="@id/txtCarModel"
+                android:text="@string/car_year"
+                android:fontFamily="@font/mulish"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/txtCarGrade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextColorLabel"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="12dp"
+                android:layout_toEndOf="@+id/phtCarPhoto"
+                android:layout_below="@id/txtCarYear"
+                android:text="@string/car_Grade"
+                android:fontFamily="@font/mulish"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtCarDetails"
+                android:layout_width="match_parent"
+                style="@style/TextColorLabel"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtCarGrade"
+                android:layout_toEndOf="@+id/phtCarPhoto"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="12dp"
+                android:fontFamily="@font/mulish"
+                android:text="@string/car_Details"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/reserveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/reserve_vehicle"
+                style="@style/TextColor"
+                android:backgroundTint="@color/white"
+                android:background="@drawable/rounded_corner"
+                android:layout_below="@id/phtCarPhoto"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginBottom="12dp"
+                android:padding="8dp"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

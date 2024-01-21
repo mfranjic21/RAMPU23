@@ -13,7 +13,8 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:clickable="false"
-        app:cardElevation="0dp">
+        app:cardElevation="0dp"
+        app:cardCornerRadius="16dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -21,31 +22,18 @@
             android:background="@drawable/rounded_corner">
 
             <TextView
-                android:id="@+id/brojPitanja"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="12dp"
-                android:fontFamily="@font/mulish"
-                android:text="@string/pitanjeBroj"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent" />
-
-            <TextView
                 android:id="@+id/naslovPitanja"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/brojPitanja"
+                android:layout_alignParentTop="true"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/mulish"
                 android:text="@string/pitanjeTekst"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/brojPitanja"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent" />
 
             <TextView
                 android:id="@+id/odgovorPitanja"

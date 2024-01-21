@@ -43,9 +43,11 @@
             android:name=".FaqViewHolder">
         </activity>
         <activity
-            android:name=".Pitanja">
+            android:name=".Questions">
         </activity>
-
+        <activity
+            android:name=".myReservations.MyReservations">
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"
