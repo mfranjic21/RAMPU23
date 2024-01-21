@@ -4,16 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/aplikacija">
+    style="@style/ScreenBackground">
+
+
+    <TextView
+        android:id="@+id/korisnickaPodrska2"
+        style="@style/TextColorLabel"
+        android:layout_width="244dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/mulish"
+        android:text="Profil"
+        android:textAllCaps="false"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/vrati_nazad_promjena"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageButton
         android:id="@+id/vrati_nazad_promjena"
-        android:layout_width="50dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="28dp"
-        android:background="@color/aplikacija"
+        style="@style/ScreenBackground"
+        android:layout_width="42dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/baseline_arrow_back_ios_24" />
@@ -29,12 +45,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/baseline_account_circle_24" />
 
-
     <EditText
         android:id="@+id/promijeni_ime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="text"
         android:text="Ivan"
@@ -47,7 +62,7 @@
         android:id="@+id/promijeni_pass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:inputType="textPassword"
         android:text="jasam"

@@ -15,6 +15,9 @@ class Profil : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.profil)
 
+        val username = findViewById<TextView>(R.id.ime_prezime)
+        val user = SessionManager.getLoggedUser()
+        username.text = user.lastname+" "+user.firstname
 
         val vracaj = findViewById<ImageButton>(R.id.vrati_nazad)
         vracaj.setOnClickListener {
@@ -38,6 +41,12 @@ class Profil : AppCompatActivity() {
         val podrska = findViewById<TextView>(R.id.podrska)
         podrska.setOnClickListener {
             val intent = Intent(this, KorisnickaPodrska::class.java)
+            startActivity(intent)
+        }
+
+        val postavkeAplikacije = findViewById<TextView>(R.id.promijeniPostavke)
+        postavkeAplikacije.setOnClickListener {
+            val intent = Intent(this, PostavkeAplikacije::class.java)
             startActivity(intent)
         }
 

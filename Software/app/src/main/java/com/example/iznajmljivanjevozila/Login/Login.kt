@@ -43,7 +43,7 @@ class Login : AppCompatActivity() {
 
             for (user in users) {
                 if (user.username == username && user.password == password) {
-                    SessionManager.logginUser(user.username)
+                    SessionManager.logginUser(user)
                 }
             }
 

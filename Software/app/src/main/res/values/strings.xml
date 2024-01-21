@@ -31,4 +31,6 @@
     <string name="car_Details">Car details</string>
     <string name="myReservations">Moje rezervacije</string>
     <string name="listEmpty">Niste rezervirali niti jedno vozilo</string>
+    <string name="remove_reservation">Ukloni rezervaciju</string>
+    <string name="postavkeAplikacije">Postavke aplikacije</string>
 </resources>

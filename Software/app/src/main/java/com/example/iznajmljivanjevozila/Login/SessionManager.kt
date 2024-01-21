@@ -1,8 +1,10 @@
 package com.example.iznajmljivanjevozila.Login
 
+import com.example.iznajmljivanjevozila.data.User
+
 object SessionManager {
     private var isLoggedIn: Boolean = false
-    private var loggedUser: String = ""
+    private lateinit var loggedUser: User
 
     fun setLoggedIn(isLoggedIn: Boolean) {
         this.isLoggedIn = isLoggedIn
@@ -12,11 +14,11 @@ object SessionManager {
         return isLoggedIn
     }
 
-    fun logginUser(loginUsername: String){
-        loggedUser = loginUsername
+    fun logginUser(user: User){
+        loggedUser = user
     }
 
-    fun getLoggedUser(): String{
+    fun getLoggedUser(): User {
         return loggedUser
     }
 }
