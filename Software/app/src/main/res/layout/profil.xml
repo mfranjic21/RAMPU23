@@ -4,25 +4,15 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/aplikacija">
+    style="@style/ScreenBackground">
 
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="36dp"
-        android:text="Profile"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/profilna"
         android:layout_width="86dp"
         android:layout_height="74dp"
         android:layout_marginTop="64dp"
+        style="@style/TextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,20 +34,13 @@
         app:layout_constraintVertical_bias="0.788" />
 
     <TextView
-        android:id="@+id/ispis_mail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ivanhorvat@gmail.com"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ime_prezime" />
-
-    <TextView
         android:id="@+id/ime_prezime"
+        style="@style/TextColorLabel"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ivan Horvat"
+        android:layout_height="28dp"
+        android:layout_marginTop="12dp"
+        android:text="Placeholder"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profilna" />
@@ -68,16 +51,17 @@
         android:layout_height="51dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:background="@color/aplikacija"
+        style="@style/ScreenBackground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/baseline_arrow_back_ios_24" />
 
     <TextView
         android:id="@+id/promijeniProfil"
+        style="@style/TextColor"
         android:layout_width="305dp"
         android:layout_height="60dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/kontejner"
         android:fontFamily="@font/mulish"
         android:padding="12dp"
@@ -87,7 +71,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ispis_mail" />
+        app:layout_constraintTop_toBottomOf="@+id/ime_prezime" />
 
     <TextView
         android:id="@+id/promijeniPostavke"
@@ -100,6 +84,7 @@
         android:text="Postavke aplikacije"
         android:textSize="24sp"
         android:textStyle="bold"
+        style="@style/TextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
@@ -109,13 +94,14 @@
         android:id="@+id/podrska"
         android:layout_width="305dp"
         android:layout_height="60dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/kontejner"
         android:fontFamily="@font/mulish"
         android:padding="12dp"
         android:text="Podrška"
         android:textSize="24sp"
         android:textStyle="bold"
+        style="@style/TextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/promijeniPostavke" />
@@ -124,6 +110,7 @@
         android:id="@+id/mojeRezervacije"
         android:layout_width="305dp"
         android:layout_height="60dp"
+        style="@style/TextColor"
         android:layout_marginTop="24dp"
         android:background="@drawable/kontejner"
         android:fontFamily="@font/mulish"

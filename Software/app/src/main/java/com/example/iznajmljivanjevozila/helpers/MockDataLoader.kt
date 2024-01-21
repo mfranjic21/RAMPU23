@@ -19,6 +19,13 @@ object MockDataLoader {
         val users = UsersList.users
         users.add(user)
     }
+
+    fun updateUser(updatedUser: User, oldUsername: String) {
+        val users = UsersList.users
+        val existingUserIndex = users.indexOfFirst { it.username == oldUsername }
+
+        users[existingUserIndex] = updatedUser
+    }
 }
 
 object UsersList{
