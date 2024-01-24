@@ -7,7 +7,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.iznajmljivanjevozila.SessionManager
 import com.example.iznajmljivanjevozila.MainActivity
+import com.example.iznajmljivanjevozila.fragments.ProfileConfiguration
 import com.example.iznajmljivanjevozila.R
+import com.example.iznajmljivanjevozila.fragments.MyReservations
 
 class Menu : AppCompatActivity() {
 

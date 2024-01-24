@@ -4,11 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.iznajmljivanjevozila.data.Questions
-import com.example.iznajmljivanjevozila.R
 import com.example.iznajmljivanjevozila.helpers.FaqViewHolder
 
-class FaqAdapter(private val faqList: List<Questions>) : RecyclerView.Adapter<FaqViewHolder>() {
-
+class FaqAdapter(private val faqList: List<Questions>) : RecyclerView.Adapter<FaqViewHolder>()  {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FaqViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.faq_card_view, parent, false)
         return FaqViewHolder(view)
