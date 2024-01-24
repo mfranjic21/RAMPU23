@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         carsList.add(Cars("Škoda", "Octavia", "2022",  "OS-5694-DK", "4,000 km", "Dizel, Automatski mjenjač, Broj sjedala:5", true, "", R.drawable.skoda_octavia))
         carsList.add(Cars("Audi", "A4", "2009",  "PŽ-452-FG", "140,382 km", "Benzin, Manualni mjenjač, Broj sjedala: 5", true, "", R.drawable.audi_a4))
         carsList.add(Cars("Volkswagen", "Tiguan", "2019",  "VŽ-2152-KT", "67,415 km", "Dizel, Automatski mjenjač, Broj sjedala:5", true, "", R.drawable.vw_tiguan))
-        carsList.add(Cars("Mercedes-Benz", "C-class", "2018",  "VŽ-2152-KT", "90,419 km", "Dizel, Automatski mjenjač, Broj sjedala:4", true, "", R.drawable.mercedesbenz_cclass))
+        carsList.add(Cars("Mercedes-Benz", "C-class", "2018",  "VŽ-524-MD", "90,419 km", "Dizel, Automatski mjenjač, Broj sjedala:4", true, "", R.drawable.mercedesbenz_cclass))
         carsList.add(Cars("Volvo", "V40", "2016",  "SB-125-BN", "110,792 km", "Dizel, Manualni mjenjač, Broj sjedala:5", true, "", R.drawable.volvo_v40))
     }
 
