@@ -36,10 +36,10 @@ class MainActivity : AppCompatActivity() {
         val profil = findViewById<ImageButton>(R.id.profil_pocetna)
 
         profil.setOnClickListener {
-
             val intent = Intent (this, Menu::class.java)
             startActivity(intent)
         }
+
         carList = findViewById(R.id.carReservation)
         carList.layoutManager = LinearLayoutManager(this)
         carList.adapter = CarListAdapter(carsList)
