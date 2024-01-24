@@ -1,15 +1,15 @@
-package com.example.iznajmljivanjevozila
+package com.example.iznajmljivanjevozila.fragments
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.iznajmljivanjevozila.Login.Login
-import com.example.iznajmljivanjevozila.Login.SessionManager
-import com.example.iznajmljivanjevozila.myReservations.MyReservations
+import com.example.iznajmljivanjevozila.SessionManager
+import com.example.iznajmljivanjevozila.MainActivity
+import com.example.iznajmljivanjevozila.R
 
-class Profil : AppCompatActivity() {
+class Menu : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,7 @@ class Profil : AppCompatActivity() {
 
         val postavkeProfila = findViewById<TextView>(R.id.promijeniProfil)
         postavkeProfila.setOnClickListener {
-            val intent = Intent(this, PostavkeProfila::class.java)
+            val intent = Intent(this, ProfileConfiguration::class.java)
             startActivity(intent)
         }
 
@@ -46,7 +46,7 @@ class Profil : AppCompatActivity() {
 
         val postavkeAplikacije = findViewById<TextView>(R.id.promijeniPostavke)
         postavkeAplikacije.setOnClickListener {
-            val intent = Intent(this, PostavkeAplikacije::class.java)
+            val intent = Intent(this, AppConfiguration::class.java)
             startActivity(intent)
         }
 
@@ -55,8 +55,6 @@ class Profil : AppCompatActivity() {
             val intent = Intent(this, MyReservations::class.java)
             startActivity(intent)
         }
-
-
 
     }
 }

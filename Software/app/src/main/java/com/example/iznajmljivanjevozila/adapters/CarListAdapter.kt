@@ -1,19 +1,15 @@
-package com.example.iznajmljivanjevozila.carsDB
+package com.example.iznajmljivanjevozila.adapters
 
 import android.content.Context
 import android.content.Intent
-import android.text.method.TextKeyListener.clear
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.iznajmljivanjevozila.Login.SessionManager
+import com.example.iznajmljivanjevozila.SessionManager
 import com.example.iznajmljivanjevozila.MainActivity
-import com.example.iznajmljivanjevozila.Profil
 import com.example.iznajmljivanjevozila.R
-import com.example.iznajmljivanjevozila.helpers.MockDataLoader
-import com.example.iznajmljivanjevozila.myReservations.MyReservations
-import java.util.Collections.addAll
+import com.example.iznajmljivanjevozila.data.Cars
+import com.example.iznajmljivanjevozila.helpers.CarsViewHolder
 
 class CarListAdapter(private val carsList: List<Cars>, reserve: Boolean = false, private val context: Context? = null) : RecyclerView.Adapter<CarsViewHolder>() {
     private val reserved = reserve

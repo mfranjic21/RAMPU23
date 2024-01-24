@@ -14,10 +14,10 @@
         android:theme="@style/Theme.IznajmljivanjeVozila">
 
         <activity
-            android:name=".Login.Register"
+            android:name=".fragments.Register"
             android:exported="false" />
         <activity
-            android:name=".Login.Login"
+            android:name=".fragments.Login"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -29,24 +29,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".KorisnickaPodrska" />
+            android:name=".fragments.KorisnickaPodrska" />
         <activity
-            android:name=".Profil"/>
+            android:name=".fragments.Menu"/>
         <activity
-            android:name=".PostavkeProfila" />
+            android:name=".fragments.ProfileConfiguration" />
         <activity
-            android:name=".PostavkeAplikacije" />
+            android:name=".fragments.AppConfiguration" />
         <activity
-            android:name=".FaqAdapter">
+            android:name=".adapters.FaqAdapter">
         </activity>
         <activity
-            android:name=".FaqViewHolder">
+            android:name=".helpers.FaqViewHolder">
         </activity>
         <activity
-            android:name=".Questions">
+            android:name=".data.Questions">
         </activity>
         <activity
-            android:name=".myReservations.MyReservations">
+            android:name=".fragments.MyReservations">
         </activity>
 
         <meta-data

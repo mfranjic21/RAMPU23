@@ -1,18 +1,15 @@
-package com.example.iznajmljivanjevozila.myReservations
+package com.example.iznajmljivanjevozila.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.provider.Settings.Global.getString
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.iznajmljivanjevozila.Profil
 import com.example.iznajmljivanjevozila.R
-import com.example.iznajmljivanjevozila.carsDB.CarListAdapter
-import com.example.iznajmljivanjevozila.carsDB.Cars
-import com.example.iznajmljivanjevozila.carsDB.carsList
+import com.example.iznajmljivanjevozila.adapters.CarListAdapter
+import com.example.iznajmljivanjevozila.data.carsList
 
 
 class MyReservations : AppCompatActivity(){
@@ -27,7 +24,7 @@ class MyReservations : AppCompatActivity(){
         txtListEmpty = findViewById(R.id.noReservation)
 
         backButton.setOnClickListener {
-            val intent = Intent (this, Profil::class.java)
+            val intent = Intent (this, Menu::class.java)
             startActivity(intent)
         }
 
