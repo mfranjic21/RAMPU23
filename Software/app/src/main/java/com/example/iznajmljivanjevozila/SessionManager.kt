@@ -1,4 +1,4 @@
-package com.example.iznajmljivanjevozila.Login
+package com.example.iznajmljivanjevozila
 
 import com.example.iznajmljivanjevozila.data.User
 
@@ -7,7 +7,7 @@ object SessionManager {
     private lateinit var loggedUser: User
 
     fun setLoggedIn(isLoggedIn: Boolean) {
-        this.isLoggedIn = isLoggedIn
+        SessionManager.isLoggedIn = isLoggedIn
     }
 
     fun isLoggedIn(): Boolean {

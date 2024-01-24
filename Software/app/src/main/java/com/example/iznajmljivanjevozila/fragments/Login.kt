@@ -1,4 +1,4 @@
-package com.example.iznajmljivanjevozila.Login
+package com.example.iznajmljivanjevozila.fragments
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.example.iznajmljivanjevozila.SessionManager
 import com.example.iznajmljivanjevozila.MainActivity
 import com.example.iznajmljivanjevozila.R
 import com.example.iznajmljivanjevozila.helpers.MockDataLoader

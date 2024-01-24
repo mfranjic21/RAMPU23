@@ -1,9 +1,8 @@
-package com.example.iznajmljivanjevozila
+package com.example.iznajmljivanjevozila.fragments
 
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.res.Configuration
 import android.content.res.Configuration.UI_MODE_NIGHT_MASK
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
@@ -12,8 +11,9 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SwitchCompat
+import com.example.iznajmljivanjevozila.R
 
-class PostavkeAplikacije : AppCompatActivity() {
+class AppConfiguration : AppCompatActivity() {
 
     private lateinit var switchMode: SwitchCompat
     private lateinit var sharedPreferences: SharedPreferences
@@ -26,7 +26,7 @@ class PostavkeAplikacije : AppCompatActivity() {
         val natragButton = findViewById<ImageButton>(R.id.natrag)
 
         natragButton.setOnClickListener {
-            val intent = Intent (this, Profil::class.java)
+            val intent = Intent (this, Menu::class.java)
             startActivity(intent)
         }
 

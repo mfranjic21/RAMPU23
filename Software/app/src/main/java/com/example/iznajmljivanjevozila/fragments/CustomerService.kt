@@ -1,4 +1,4 @@
-package com.example.iznajmljivanjevozila
+package com.example.iznajmljivanjevozila.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,11 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.iznajmljivanjevozila.adapters.FaqAdapter
+import com.example.iznajmljivanjevozila.data.Questions
+import com.example.iznajmljivanjevozila.R
+import com.example.iznajmljivanjevozila.data.faqList
+import com.example.iznajmljivanjevozila.data.yourQuestions
 
 
 class KorisnickaPodrska : AppCompatActivity() {
@@ -24,7 +29,7 @@ class KorisnickaPodrska : AppCompatActivity() {
         fillVasaPitanja()
 
         natragButton.setOnClickListener {
-            val intent = Intent (this, Profil::class.java)
+            val intent = Intent (this, Menu::class.java)
             startActivity(intent)
         }
 

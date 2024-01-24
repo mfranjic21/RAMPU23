@@ -1,4 +1,4 @@
-package com.example.iznajmljivanjevozila.carsDB
+package com.example.iznajmljivanjevozila.data
 
 var carsList = mutableListOf<Cars>()
 

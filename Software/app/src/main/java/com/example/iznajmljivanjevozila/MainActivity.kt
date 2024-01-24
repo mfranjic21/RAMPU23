@@ -6,16 +6,16 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import com.example.iznajmljivanjevozila.Login.Login
-import com.example.iznajmljivanjevozila.Login.SessionManager
+import com.example.iznajmljivanjevozila.fragments.Login
 import android.widget.ImageButton
 import android.widget.SearchView
 import android.widget.Spinner
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.iznajmljivanjevozila.carsDB.CarListAdapter
-import com.example.iznajmljivanjevozila.carsDB.Cars
-import com.example.iznajmljivanjevozila.carsDB.carsList
+import com.example.iznajmljivanjevozila.adapters.CarListAdapter
+import com.example.iznajmljivanjevozila.data.Cars
+import com.example.iznajmljivanjevozila.data.carsList
+import com.example.iznajmljivanjevozila.fragments.Menu
 
 class MainActivity : AppCompatActivity() {
     private lateinit var carList : RecyclerView
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         profil.setOnClickListener {
 
-            val intent = Intent (this, Profil::class.java)
+            val intent = Intent (this, Menu::class.java)
             startActivity(intent)
         }
         carList = findViewById(R.id.carReservation)

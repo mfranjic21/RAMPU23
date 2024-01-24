@@ -1,4 +1,4 @@
-package com.example.iznajmljivanjevozila
+package com.example.iznajmljivanjevozila.data
 
 val faqList = mutableListOf<Questions>()
 val yourQuestions = mutableListOf<Questions>()
