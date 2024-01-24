@@ -97,20 +97,41 @@
                 android:text="@string/car_Details"
                 android:textSize="20sp" />
 
-            <Button
-                android:id="@+id/reserveButton"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="@string/reserve_vehicle"
-                style="@style/TextColor"
-                android:backgroundTint="@color/white"
-                android:background="@drawable/rounded_corner"
                 android:layout_below="@id/phtCarPhoto"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="8dp"
                 android:layout_marginStart="12dp"
-                android:layout_marginBottom="12dp"
-                android:padding="8dp"/>
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/reserveButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reserve_vehicle"
+                    style="@style/TextColor"
+                    android:backgroundTint="@color/white"
+                    android:background="@drawable/rounded_corner"
+                    android:layout_alignParentStart="true"
+                    android:padding="8dp"/>
+
+                <Button
+                    android:id="@+id/reviewButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/review_vehicle"
+                    style="@style/TextColor"
+                    android:backgroundTint="@color/white"
+                    android:background="@drawable/rounded_corner"
+                    android:layout_below="@id/reserveButton"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="12dp"
+                    android:padding="8dp"/>
+            </LinearLayout>
+
 
         </RelativeLayout>
 

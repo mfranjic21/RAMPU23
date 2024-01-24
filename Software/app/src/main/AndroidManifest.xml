@@ -39,6 +39,10 @@
         <activity
             android:name=".fragments.MyReservations">
         </activity>
+        <activity
+            android:name=".fragments.ReviewsFragment"/>
+        <activity
+            android:name=".fragments.RecensionFragment"/>
 
         <meta-data
             android:name="preloaded_fonts"

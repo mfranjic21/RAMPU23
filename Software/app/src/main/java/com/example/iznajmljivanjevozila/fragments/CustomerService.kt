@@ -20,10 +20,10 @@ class CustomerService : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.customer_service)
 
-        val natragButton = findViewById<ImageButton>(R.id.natrag)
+        val natragButton = findViewById<ImageButton>(R.id.btnBack)
         val faqButton = findViewById<Button>(R.id.faq)
         val vasaPitanjaButton = findViewById<Button>(R.id.vasaPitanja)
-        val posaljiNovoPitanjeButton = findViewById<ImageButton>(R.id.posaljiNovoPitanje)
+        val posaljiNovoPitanjeButton = findViewById<ImageButton>(R.id.addRecension)
 
         fillFAQ()
         fillVasaPitanja()

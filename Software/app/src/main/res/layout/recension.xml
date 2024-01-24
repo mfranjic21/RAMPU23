@@ -25,68 +25,35 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/mulish"
-        android:text="@string/korisnickaPodrska"
+        android:text="@string/yourRecension"
         android:textAllCaps="false"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/btnBack"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/faq"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/arrow_border"
-        android:fontFamily="@font/mulish"
-        android:padding="6dp"
-        android:text="@string/faq"
-        style="@style/ScreenBackground"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/writeRecension" />
-
-    <Button
-        android:id="@+id/vasaPitanja"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/transparent"
-        android:fontFamily="@font/mulish"
-        android:padding="6dp"
-        android:text="@string/vasaPitanja"
-        style="@style/ScreenBackground"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/faq"
-        app:layout_constraintTop_toBottomOf="@+id/writeRecension" />
-
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/faqQuestions"
+        android:id="@+id/otherRecensionsList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/otherRecensions"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/faq"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/writeRecension"
         style="@style/ScreenBackground"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="175dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_corner"
         android:fontFamily="@font/mulish"
         android:padding="12dp"
-        android:text="@string/postaviNamPitanje"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -96,31 +63,61 @@
 
     <EditText
         android:inputType="text"
-        android:id="@+id/inputPitanja"
+        android:id="@+id/inputRecension"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="12dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="48dp"
         android:layout_marginEnd="12dp"
-        android:layout_marginBottom="12dp"
         android:background="@color/white"
         android:fontFamily="@font/mulish"
-        android:textColor="@color/black"
-        android:hint="@string/pitanjeKorisnickojSluzbi"
+        android:hint="@string/writeRecension"
         android:textSize="16sp"
         style="@style/ScreenBackground"
-        app:layout_constraintBottom_toBottomOf="@+id/writeRecension"
-        app:layout_constraintEnd_toStartOf="@+id/addRecension"
+        android:textColor="@color/black"
+        android:gravity="start"
+        app:layout_constraintEnd_toEndOf="@+id/writeRecension"
         app:layout_constraintStart_toStartOf="@+id/writeRecension"
         app:layout_constraintTop_toTopOf="@+id/writeRecension"
+        app:layout_constraintBottom_toTopOf="@id/gradeBar"
         tools:ignore="TouchTargetSizeCheck" />
+
+    <RatingBar
+        android:id="@+id/gradeBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:stepSize="0.5"
+        app:layout_constraintTop_toBottomOf="@+id/inputRecension"
+        app:layout_constraintLeft_toLeftOf="@id/writeRecension"
+        app:layout_constraintBottom_toBottomOf="@+id/writeRecension"
+        android:numStars="5"/>
+
+
+
+    <TextView
+        android:id="@+id/otherRecensions"
+        style="@style/TextColorLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="12dp"
+        android:fontFamily="@font/mulish"
+        android:text="@string/otherRecensions"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/writeRecension" />
+
 
     <ImageButton
         android:id="@+id/addRecension"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginEnd="12dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/arrow_border"
         app:layout_constraintBottom_toBottomOf="@+id/writeRecension"
         app:layout_constraintEnd_toEndOf="@+id/writeRecension"

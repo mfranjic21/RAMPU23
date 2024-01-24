@@ -44,20 +44,15 @@ class ProfileConfiguration : AppCompatActivity() {
 
 
         val spremi = findViewById<Button>(R.id.spremi)
+
         spremi.setOnClickListener {
 
-            val updatedFirstname = firstname.text.toString()
-            val updatedLastname = lastname.text.toString()
-            val updatedEmail = email.text.toString()
-            val updatedUsername = username.text.toString()
-            val updatedPassword = password.text.toString()
-
             val updatedUser = User(
-                updatedFirstname,
-                updatedLastname,
-                updatedEmail,
-                updatedUsername,
-                updatedPassword
+                firstname.text.toString(),
+                lastname.text.toString(),
+                email.text.toString(),
+                username.text.toString(),
+                password.text.toString()
             )
 
             SessionManager.logginUser(updatedUser)

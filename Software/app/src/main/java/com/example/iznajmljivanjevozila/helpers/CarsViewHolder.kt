@@ -15,4 +15,5 @@ class CarsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val carGrade: TextView = itemView.findViewById(R.id.txtCarGrade)
     val carDetails: TextView = itemView.findViewById(R.id.txtCarDetails)
     val reserveButton: Button = itemView.findViewById(R.id.reserveButton)
+    val reviewButton: Button = itemView.findViewById(R.id.reviewButton)!!
 }
