@@ -15,7 +15,7 @@ import com.example.iznajmljivanjevozila.data.faqList
 import com.example.iznajmljivanjevozila.data.yourQuestions
 
 
-class KorisnickaPodrska : AppCompatActivity() {
+class CustomerService : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.customer_service)

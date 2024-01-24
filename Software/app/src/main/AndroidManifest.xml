@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".fragments.KorisnickaPodrska" />
+            android:name=".fragments.CustomerService" />
         <activity
             android:name=".fragments.Menu"/>
         <activity
