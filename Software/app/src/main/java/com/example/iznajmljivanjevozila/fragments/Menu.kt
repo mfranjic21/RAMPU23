@@ -58,5 +58,11 @@ class Menu : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val kontakt = findViewById<TextView>(R.id.kontakt)
+        kontakt.setOnClickListener {
+            val intent = Intent(this, Contact::class.java)
+            startActivity(intent)
+        }
+
     }
 }
