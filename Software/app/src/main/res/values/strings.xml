@@ -33,4 +33,18 @@
     <string name="listEmpty">Niste rezervirali niti jedno vozilo</string>
     <string name="remove_reservation">Ukloni rezervaciju</string>
     <string name="postavkeAplikacije">Postavke aplikacije</string>
+    <string name="review_vehicle">Recenzije</string>
+    <string name="reviews">Recenzije</string>
+    <string name="username">Username</string>
+    <string name="comment">Comment</string>
+    <string name="grade">Grade</string>
+    <string name="leaveRecension">Ostavite recenziju za korišteno vozilo</string>
+    <string name="recensionDescription">Ocjenite naše usluge i ostavite komentar o vašem iskustvu s našim vozilom</string>
+    <string name="recension_vehicle">Ostavi recenziju</string>
+    <string name="closeRecension">Odustani</string>
+    <string name="newRecension">Recenzija</string>
+    <string name="writeRecension">Napiši recenziju\n</string>
+    <string name="yourRecension">Vaša recenzija</string>
+    <string name="otherRecensions">Druge recenzije</string>
+    <string name="txtGrade">Ocjena:</string>
 </resources>

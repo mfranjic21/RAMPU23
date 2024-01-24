@@ -8,7 +8,7 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.iznajmljivanjevozila.adapters.FaqAdapter
+import com.example.iznajmljivanjevozila.FaqAdapter
 import com.example.iznajmljivanjevozila.data.Questions
 import com.example.iznajmljivanjevozila.R
 import com.example.iznajmljivanjevozila.data.faqList
@@ -20,10 +20,10 @@ class CustomerService : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.customer_service)
 
-        val natragButton = findViewById<ImageButton>(R.id.natrag)
+        val natragButton = findViewById<ImageButton>(R.id.btnBack)
         val faqButton = findViewById<Button>(R.id.faq)
         val vasaPitanjaButton = findViewById<Button>(R.id.vasaPitanja)
-        val posaljiNovoPitanjeButton = findViewById<ImageButton>(R.id.posaljiNovoPitanje)
+        val posaljiNovoPitanjeButton = findViewById<ImageButton>(R.id.addRecension)
 
         fillFAQ()
         fillVasaPitanja()
@@ -68,6 +68,7 @@ class CustomerService : AppCompatActivity() {
         }
 
         fillFAQ()
+
 
         val faqQuestions = findViewById<RecyclerView>(R.id.faqQuestions)
         faqQuestions.layoutManager = LinearLayoutManager(this)

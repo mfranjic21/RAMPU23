@@ -1,20 +1,19 @@
-package com.example.iznajmljivanjevozila
+package com.example.iznajmljivanjevozila.fragments
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.iznajmljivanjevozila.SessionManager
 import com.example.iznajmljivanjevozila.R
+import com.example.iznajmljivanjevozila.SessionManager
 import com.example.iznajmljivanjevozila.helpers.MockDataLoader
 import com.example.iznajmljivanjevozila.data.User
 
 
-class PostavkeProfila : AppCompatActivity() {
+class ProfileConfiguration : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,20 +44,15 @@ class PostavkeProfila : AppCompatActivity() {
 
 
         val spremi = findViewById<Button>(R.id.spremi)
+
         spremi.setOnClickListener {
 
-            val updatedFirstname = firstname.text.toString()
-            val updatedLastname = lastname.text.toString()
-            val updatedEmail = email.text.toString()
-            val updatedUsername = username.text.toString()
-            val updatedPassword = password.text.toString()
-
             val updatedUser = User(
-                updatedFirstname,
-                updatedLastname,
-                updatedEmail,
-                updatedUsername,
-                updatedPassword
+                firstname.text.toString(),
+                lastname.text.toString(),
+                email.text.toString(),
+                username.text.toString(),
+                password.text.toString()
             )
 
             SessionManager.logginUser(updatedUser)
