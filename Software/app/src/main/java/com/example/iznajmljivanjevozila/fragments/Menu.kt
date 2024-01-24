@@ -40,7 +40,7 @@ class Menu : AppCompatActivity() {
 
         val podrska = findViewById<TextView>(R.id.podrska)
         podrska.setOnClickListener {
-            val intent = Intent(this, KorisnickaPodrska::class.java)
+            val intent = Intent(this, CustomerService::class.java)
             startActivity(intent)
         }
 

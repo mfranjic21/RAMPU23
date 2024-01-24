@@ -1,19 +1,20 @@
-package com.example.iznajmljivanjevozila.fragments
+package com.example.iznajmljivanjevozila
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.iznajmljivanjevozila.SessionManager
 import com.example.iznajmljivanjevozila.R
-import com.example.iznajmljivanjevozila.data.User
 import com.example.iznajmljivanjevozila.helpers.MockDataLoader
+import com.example.iznajmljivanjevozila.data.User
 
 
-class ProfileConfiguration : AppCompatActivity() {
+class PostavkeProfila : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

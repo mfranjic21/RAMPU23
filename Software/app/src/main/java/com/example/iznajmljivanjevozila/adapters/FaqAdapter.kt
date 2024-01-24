@@ -1,11 +1,11 @@
-package com.example.iznajmljivanjevozila.adapters
+package com.example.iznajmljivanjevozila
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.iznajmljivanjevozila.helpers.FaqViewHolder
 import com.example.iznajmljivanjevozila.data.Questions
 import com.example.iznajmljivanjevozila.R
+import com.example.iznajmljivanjevozila.helpers.FaqViewHolder
 
 class FaqAdapter(private val faqList: List<Questions>) : RecyclerView.Adapter<FaqViewHolder>() {
 
