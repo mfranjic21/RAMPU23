@@ -10,7 +10,6 @@ import com.example.iznajmljivanjevozila.fragments.Login
 import android.widget.ImageButton
 import android.widget.SearchView
 import android.widget.Spinner
-import androidx.core.view.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.iznajmljivanjevozila.adapters.CarListAdapter
@@ -20,23 +19,28 @@ import com.example.iznajmljivanjevozila.data.carsList
 import com.example.iznajmljivanjevozila.data.reviewsList
 import com.example.iznajmljivanjevozila.fragments.Menu
 import com.example.iznajmljivanjevozila.helpers.MockDataLoader
-import com.example.iznajmljivanjevozila.helpers.UsersList
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var auth: FirebaseAuth
     private lateinit var carList : RecyclerView
     private var currentFilter: String = "Marka"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        FirebaseApp.initializeApp(this)
         setContentView(R.layout.activity_main)
 
+        auth = FirebaseAuth.getInstance()
         if(carsList.size == 0) {
             fillCarView()
             fillReviews()
         }
 
-        if(!SessionManager.isLoggedIn()){
+        if(auth.currentUser == null){
             val intent = Intent(this, Login::class.java)
             startActivity(intent)
+            finish()
         }
 
         val profil = findViewById<ImageButton>(R.id.profil_pocetna)
