@@ -5,32 +5,48 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.CursorAdapter
-import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.recyclerview.widget.RecyclerView
-import com.example.iznajmljivanjevozila.SessionManager
+import com.bumptech.glide.Glide
 import com.example.iznajmljivanjevozila.MainActivity
 import com.example.iznajmljivanjevozila.R
 import com.example.iznajmljivanjevozila.data.Cars
-import com.example.iznajmljivanjevozila.data.Reviews
 import com.example.iznajmljivanjevozila.data.reviewsList
-import com.example.iznajmljivanjevozila.fragments.CustomerService
-import com.example.iznajmljivanjevozila.fragments.Menu
-import com.example.iznajmljivanjevozila.fragments.MyReservations
 import com.example.iznajmljivanjevozila.fragments.RecensionFragment
 import com.example.iznajmljivanjevozila.fragments.ReviewsFragment
 import com.example.iznajmljivanjevozila.helpers.CarsViewHolder
+import com.example.iznajmljivanjevozila.helpers.VehicleDataUpdate
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.storage.FirebaseStorage
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 import java.text.DecimalFormat
+import java.util.concurrent.CountDownLatch
 
 
-class CarListAdapter(private val carsList: List<Cars>, reserve: Boolean = false, private val context: Context? = null, review: Boolean? = null, car: Cars? = null) : RecyclerView.Adapter<CarsViewHolder>() {
+
+class CarListAdapter(private val carsList: List<Cars>, reserve: Boolean = false, private val context: Context? = null, review: Boolean? = null, newCarList: List<Cars>? = null) : RecyclerView.Adapter<CarsViewHolder>() {
     private val reserved = reserve
     private val review = review ?: false
-    private val car = car ?: null
-    private var filteredCarsList: List<Cars> = filterCarsList()
+    private val newCarList = newCarList ?: null
+    private var uid = Firebase.auth.currentUser!!.uid
+    private var filteredCarsList: List<Cars> = filterCarsList(uid)
+    private var database = com.google.firebase.ktx.Firebase.database("https://iznajmljivanje-vozila-default-rtdb.europe-west1.firebasedatabase.app/")
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarsViewHolder {
@@ -45,7 +61,7 @@ class CarListAdapter(private val carsList: List<Cars>, reserve: Boolean = false,
         var gradeCount = 0
 
         for(review in reviewsList){
-            if(review.car.registrationPlate == car.registrationPlate){
+            if(review.car == car.key){
                 gradeSum += review.grade
                 gradeCount ++
             }
@@ -58,7 +74,7 @@ class CarListAdapter(private val carsList: List<Cars>, reserve: Boolean = false,
             "Još nema recenzija"
         }
 
-        holder.carPhoto.setImageResource(car.photo)
+        loadPhoto(car.photo, holder.carPhoto)
         holder.carMark.text = car.mark
         holder.carModel.text = car.model
         holder.carYear.text = car.year
@@ -68,7 +84,7 @@ class CarListAdapter(private val carsList: List<Cars>, reserve: Boolean = false,
         if (car.availability) {
             holder.reserveButton.text = holder.itemView.context.getString(R.string.reserve_vehicle)
             holder.reserveButton.isEnabled = true
-        } else if (car.reservationUser == loggedUser() && reserved){
+        } else if (car.reservationUser == uid && reserved){
             holder.reserveButton.text = holder.itemView.context.getString(R.string.remove_reservation)
             holder.reserveButton.isEnabled = true
         } else {
@@ -78,20 +94,36 @@ class CarListAdapter(private val carsList: List<Cars>, reserve: Boolean = false,
 
         holder.reserveButton.setOnClickListener {
             if (!car.availability && reserved){
-                changeAvailability(car, position)
+                changeAvailability(car, position, uid)
                 showPopupRecension(car)
             } else {
-                changeAvailability(car, position)
+                changeAvailability(car, position, uid)
             }
         }
 
         holder.reviewButton.setOnClickListener {
-            val intent = Intent(context, ReviewsFragment::class.java)
-            intent.putExtra("car", car)
-            intent.putExtra("reserved", reserved)
-            context?.startActivity(intent)
+            startReviewsFragment(car.key)
         }
     }
+
+
+    private fun loadPhoto(photoUrl: String, imageView: ImageView) {
+        val storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(photoUrl)
+
+        storageReference.downloadUrl.addOnSuccessListener { uri ->
+            Glide.with(context!!)
+                .load(uri)
+                .into(imageView)
+        }
+    }
+
+    private fun startReviewsFragment(key: String){
+        val intent = Intent(context, ReviewsFragment::class.java)
+        intent.putExtra("reserved", reserved)
+        intent.putExtra("car", key)
+        context?.startActivity(intent)
+    }
+
 
     private fun showPopupRecension(returnedCar: Cars) {
         val dialog = Dialog(context!!)
@@ -107,14 +139,14 @@ class CarListAdapter(private val carsList: List<Cars>, reserve: Boolean = false,
 
         recensionButton.setOnClickListener {
             val intent = Intent(context, RecensionFragment::class.java)
-            intent.putExtra("car", returnedCar)
+            intent.putExtra("car", returnedCar.key)
             context?.startActivity(intent)
         }
 
 
         dialog.setOnDismissListener {
             filteredCarsList = emptyList()
-            filteredCarsList = filterCarsList()
+            filteredCarsList = filterCarsList(uid)
 
             notifyDataSetChanged()
 
@@ -131,28 +163,45 @@ class CarListAdapter(private val carsList: List<Cars>, reserve: Boolean = false,
         dialog.show()
     }
 
-    private fun changeAvailability(car: Cars, position: Int) {
-        car.toggleAvailability()
-        car.reserveCar(loggedUser())
+    private fun changeAvailability(car: Cars, position: Int, uid: String) {
+        for (vehicle in carsList){
+            if (vehicle.key == car.key){
+                vehicle.toggleAvailability()
+                vehicle.reserveCar(uid)
+            }
+        }
+
         notifyItemChanged(position)
+
+        updateData(car)
     }
 
-    fun filterCarsList(): List<Cars> {
-        return if (review) {
-            var selectedCar = car as Cars
-            carsList.filter { it.registrationPlate == selectedCar.registrationPlate }
-        } else if (!reserved){
-            carsList
+    fun updateData(car: Cars) = GlobalScope.async {
+        val vehicleDataUpdate = VehicleDataUpdate()
+        vehicleDataUpdate.updateVehicleData(car)
+    }
+
+    private fun filterCarsList(uid: String): List<Cars> {
+        var filterList = removeDuplicates(carsList)
+        return if (review && newCarList!!.isNotEmpty()) {
+            removeDuplicates(newCarList)
+        } else if (!reserved) {
+            filterList
         } else {
-            carsList.filter { it.reservationUser == loggedUser() }
+            filterList.filter { it.reservationUser == uid }
         }
     }
 
+    fun <Cars> removeDuplicates(inputList: List<Cars>): List<Cars> {
+        val set = LinkedHashSet(inputList)
+        return ArrayList(set)
+    }
+
+
     override fun getItemCount(): Int {
+        Log.d("Error","${filteredCarsList.size}")
         return filteredCarsList.size
     }
 
-    private fun loggedUser(): String {
-        return SessionManager.getLoggedUser().username
-    }
+
 }

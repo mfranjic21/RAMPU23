@@ -12,18 +12,27 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.iznajmljivanjevozila.R
 import com.example.iznajmljivanjevozila.adapters.CarListAdapter
 import com.example.iznajmljivanjevozila.data.Cars
+import com.example.iznajmljivanjevozila.data.Reviews
 import com.example.iznajmljivanjevozila.data.carsList
+import com.example.iznajmljivanjevozila.data.reviewsList
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 
 
 class MyReservations : AppCompatActivity(){
 
     private lateinit var txtListEmpty: TextView
+    lateinit var uid: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.my_reservations)
 
         val backButton = findViewById<ImageButton>(R.id.btnBack)
+        uid = Firebase.auth.currentUser!!.uid
         txtListEmpty = findViewById(R.id.noReservation)
 
         backButton.setOnClickListener {
@@ -33,13 +42,14 @@ class MyReservations : AppCompatActivity(){
 
         changeLabelEmptyList()
 
+
         val myReservations = findViewById<RecyclerView>(R.id.myReservationsView)
         myReservations.layoutManager = LinearLayoutManager(this)
-        myReservations.adapter = CarListAdapter(carsList, true, this)
+        myReservations.adapter = CarListAdapter(filterCars(), true, this)
     }
 
     fun changeLabelEmptyList(){
-        val filteredCarsList = CarListAdapter(carsList, true, this).filterCarsList()
+        val filteredCarsList = carsList.filter { it.reservationUser == uid }
 
         txtListEmpty = findViewById(R.id.noReservation)
 
@@ -48,6 +58,16 @@ class MyReservations : AppCompatActivity(){
         } else {
             txtListEmpty.text = ""
         }
+    }
+
+    fun filterCars() : List<Cars>{
+        var filterList = mutableListOf<Cars>()
+        for (car in carsList){
+            if (car.reservationUser == uid){
+                filterList.add(car)
+            }
+        }
+        return filterList
     }
 }
 
