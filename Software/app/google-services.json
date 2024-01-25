@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "708239635382",
+    "project_id": "iznajmljivanje-vozila",
+    "storage_bucket": "iznajmljivanje-vozila.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:708239635382:android:200f307a040026c8d18717",
+        "android_client_info": {
+          "package_name": "com.example.iznajmljivanjevozila"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-Sptt69aNcpH23xmEvN5A-o3KD129HDQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
