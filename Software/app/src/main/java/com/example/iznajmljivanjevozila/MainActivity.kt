@@ -1,5 +1,7 @@
 package com.example.iznajmljivanjevozila
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -21,6 +23,7 @@ import com.example.iznajmljivanjevozila.data.carsList
 import com.example.iznajmljivanjevozila.data.reviewsList
 import com.example.iznajmljivanjevozila.data.userList
 import com.example.iznajmljivanjevozila.fragments.Menu
+import com.example.iznajmljivanjevozila.helpers.Notifications
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -39,6 +42,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         FirebaseApp.initializeApp(this)
         setContentView(R.layout.activity_main)
+
+        val serviceIntent = Intent(this, Notifications::class.java)
+        startService(serviceIntent)
+
+        val channel = NotificationChannel("availability", "availability", NotificationManager.IMPORTANCE_HIGH)
+        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.createNotificationChannel(channel)
+
+
 
         database = com.google.firebase.ktx.Firebase.database("https://iznajmljivanje-vozila-default-rtdb.europe-west1.firebasedatabase.app/")
 
@@ -269,22 +281,5 @@ class MainActivity : AppCompatActivity() {
             })
         }
 
-
-        /*
-        carsList.retainAll { car ->
-            when (actualFilter) {
-                "mark" -> car.mark.contains(filterValue, ignoreCase = true)
-                "model" -> car.model.contains(filterValue, ignoreCase = true)
-                "year" -> car.year.contains(filterValue, ignoreCase = true)
-                "currentMileage" -> {
-                    val numericValue = car.currentMileage.replace("[^\\d]".toRegex(), "").toIntOrNull()
-                    numericValue != null && numericValue < filterValue.toInt()
-                }
-                else -> false
-            }
-        }
-         */
-
     }
-
 }
