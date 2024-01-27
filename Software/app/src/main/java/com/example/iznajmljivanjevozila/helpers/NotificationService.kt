@@ -16,7 +16,9 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 
-class Notifications : Service(){
+class NotificationService : Service(){
+    private val database = Firebase.database("https://iznajmljivanje-vozila-default-rtdb.europe-west1.firebasedatabase.app/")
+    private val notificationRef = database.getReference("notifications")
     val userNotifications = mutableListOf<Notification>()
     private var id = 0
 
@@ -27,9 +29,9 @@ class Notifications : Service(){
     override fun onCreate() {
         super.onCreate()
 
-        val database = Firebase.database("https://iznajmljivanje-vozila-default-rtdb.europe-west1.firebasedatabase.app/")
+
         val vehicleRef = database.getReference("vehicles")
-        val notificationRef = database.getReference("notifications")
+
 
         val auth = FirebaseAuth.getInstance()
         val uid = auth.currentUser?.uid
@@ -46,6 +48,7 @@ class Notifications : Service(){
                         if (matchingNotification != null){
                             if(vehicleSnapshot.child("availability").value == true){
                                 sendLocalNotification("Vozilo " + vehicleSnapshot.child("mark").value + " je ponovno dostpuno")
+                                updateNotification(uid, vehicleSnapshot.key.toString(), "remove")
                             }
                         }
                     }
@@ -100,6 +103,34 @@ class Notifications : Service(){
         with(NotificationManagerCompat.from(this)) {
             notify(++id, notification)
             //removeNotification()
+        }
+
+    }
+
+    fun updateNotification(userArg: String, vehicleArg: String, action: String){
+        if(action == "add"){
+            notificationRef.push().setValue(Notification(userArg,vehicleArg))
+        }else if(action == "remove"){
+            val query = notificationRef.orderByChild("user").equalTo(userArg)
+
+            query.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    for (notificationSnapshot in dataSnapshot.children) {
+                        val vehicle = notificationSnapshot.child("vehicle").getValue(String::class.java)
+
+                        // Check if the vehicle matches the desired value
+                        if (vehicle == vehicleArg) {
+                            // Remove the notification from the database
+                            notificationSnapshot.ref.removeValue()
+                        }
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    // Handle errors, if any
+                }
+            })
+
         }
 
     }

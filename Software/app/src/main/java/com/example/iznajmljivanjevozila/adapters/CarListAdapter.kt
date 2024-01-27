@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
@@ -15,10 +16,12 @@ import com.bumptech.glide.Glide
 import com.example.iznajmljivanjevozila.MainActivity
 import com.example.iznajmljivanjevozila.R
 import com.example.iznajmljivanjevozila.data.Cars
+import com.example.iznajmljivanjevozila.data.Notification
 import com.example.iznajmljivanjevozila.data.reviewsList
 import com.example.iznajmljivanjevozila.fragments.RecensionFragment
 import com.example.iznajmljivanjevozila.fragments.ReviewsFragment
 import com.example.iznajmljivanjevozila.helpers.CarsViewHolder
+import com.example.iznajmljivanjevozila.helpers.NotificationService
 import com.example.iznajmljivanjevozila.helpers.VehicleDataUpdate
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
@@ -30,7 +33,7 @@ import java.text.DecimalFormat
 
 
 
-class CarListAdapter(private val carsList: List<Cars>, reserve: Boolean = false, private val context: Context? = null, review: Boolean? = null, newCarList: List<Cars>? = null) : RecyclerView.Adapter<CarsViewHolder>() {
+class CarListAdapter(private val carsList: List<Cars>, private val notificationList: List<Notification>, reserve: Boolean = false, private val context: Context? = null, review: Boolean? = null, newCarList: List<Cars>? = null) : RecyclerView.Adapter<CarsViewHolder>() {
     private val reserved = reserve
     private val review = review ?: false
     private val newCarList = newCarList ?: null
@@ -80,6 +83,17 @@ class CarListAdapter(private val carsList: List<Cars>, reserve: Boolean = false,
         holder.carGrade.text = grade
         holder.carDetails.text = car.details
 
+        val notification = notificationList.find { n -> n.vehicle == car.key }
+        if(notification != null){
+            holder.notificationStatus = true
+            holder.notificationButton.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.notification_bell, 0, 0, 0)
+        }else{
+            holder.notificationStatus = false
+            holder.notificationButton.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.notification_bell_off, 0, 0, 0)
+        }
+
+
+
         if (car.availability) {
             holder.reserveButton.text = holder.itemView.context.getString(R.string.reserve_vehicle)
             holder.reserveButton.isEnabled = true
@@ -89,6 +103,16 @@ class CarListAdapter(private val carsList: List<Cars>, reserve: Boolean = false,
         } else {
             holder.reserveButton.text = holder.itemView.context.getString(R.string.vehicle_reserved)
             holder.reserveButton.isEnabled = false
+        }
+
+        if(car.reservationUser != uid){
+            if( holder.reserveButton.isEnabled){
+                holder.notificationButton.visibility = View.GONE
+            }else{
+                holder.notificationButton.visibility = View.VISIBLE
+            }
+        }else{
+            holder.notificationButton.visibility = View.GONE
         }
 
         holder.reserveButton.setOnClickListener {
@@ -102,6 +126,19 @@ class CarListAdapter(private val carsList: List<Cars>, reserve: Boolean = false,
 
         holder.reviewButton.setOnClickListener {
             startReviewsFragment(car.key)
+        }
+
+        holder.notificationButton.setOnClickListener{
+            val notificationsHelper = NotificationService()
+            if(holder.notificationStatus){
+                holder.notificationStatus = false
+                holder.notificationButton.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.notification_bell_off, 0, 0, 0)
+                notificationsHelper.updateNotification(uid, car.key, "remove")
+            }else{
+                holder.notificationStatus = true
+                holder.notificationButton.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.notification_bell, 0, 0, 0)
+                notificationsHelper.updateNotification(uid, car.key, "add")
+            }
         }
     }
 
@@ -201,6 +238,5 @@ class CarListAdapter(private val carsList: List<Cars>, reserve: Boolean = false,
         Log.d("Error","${filteredCarsList.size}")
         return filteredCarsList.size
     }
-
 
 }

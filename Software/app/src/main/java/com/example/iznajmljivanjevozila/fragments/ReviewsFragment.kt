@@ -2,25 +2,20 @@ package com.example.iznajmljivanjevozila.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.iznajmljivanjevozila.MainActivity
 import com.example.iznajmljivanjevozila.R
-import com.example.iznajmljivanjevozila.SessionManager
 import com.example.iznajmljivanjevozila.adapters.CarListAdapter
 import com.example.iznajmljivanjevozila.adapters.ReviewListAdapter
 import com.example.iznajmljivanjevozila.data.Cars
 import com.example.iznajmljivanjevozila.data.Reviews
 import com.example.iznajmljivanjevozila.data.carsList
+import com.example.iznajmljivanjevozila.data.notificationList
 import com.example.iznajmljivanjevozila.data.reviewsList
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 
 class ReviewsFragment: AppCompatActivity() {
@@ -52,7 +47,8 @@ class ReviewsFragment: AppCompatActivity() {
     private fun fillData(reserved: Boolean, newCarList: List<Cars>) {
         var selectedCar = findViewById<RecyclerView>(R.id.selectedCar)
         selectedCar.layoutManager = LinearLayoutManager(this)
-        selectedCar.adapter = CarListAdapter(carsList, reserved, this, true, newCarList)
+        selectedCar.adapter = CarListAdapter(carsList,
+            notificationList, reserved, this, true, newCarList)
 
         var comments = findViewById<RecyclerView>(R.id.reviewsList)
         comments.layoutManager = LinearLayoutManager(this)

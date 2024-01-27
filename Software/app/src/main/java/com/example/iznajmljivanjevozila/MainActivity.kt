@@ -17,13 +17,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.iznajmljivanjevozila.adapters.CarListAdapter
 import com.example.iznajmljivanjevozila.data.Cars
+import com.example.iznajmljivanjevozila.data.Notification
 import com.example.iznajmljivanjevozila.data.Reviews
 import com.example.iznajmljivanjevozila.data.User
 import com.example.iznajmljivanjevozila.data.carsList
+import com.example.iznajmljivanjevozila.data.notificationList
 import com.example.iznajmljivanjevozila.data.reviewsList
 import com.example.iznajmljivanjevozila.data.userList
 import com.example.iznajmljivanjevozila.fragments.Menu
-import com.example.iznajmljivanjevozila.helpers.Notifications
+import com.example.iznajmljivanjevozila.helpers.NotificationService
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -43,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(this)
         setContentView(R.layout.activity_main)
 
-        val serviceIntent = Intent(this, Notifications::class.java)
+        val serviceIntent = Intent(this, NotificationService::class.java)
         startService(serviceIntent)
 
         val channel = NotificationChannel("availability", "availability", NotificationManager.IMPORTANCE_HIGH)
@@ -76,6 +78,7 @@ class MainActivity : AppCompatActivity() {
         fillReviewsList()
         fillUserList()
 
+        fillNotificationList()
         fillFilterOptions()
         setSearchViewListener()
     }
@@ -84,7 +87,7 @@ class MainActivity : AppCompatActivity() {
 
         carList = findViewById(R.id.carReservation)
         carList.layoutManager = LinearLayoutManager(this)
-        carList.adapter = CarListAdapter(carsList, false, this)
+        carList.adapter = CarListAdapter(carsList, notificationList, false, this)
     }
 
     private fun fillCars() {
@@ -125,7 +128,6 @@ class MainActivity : AppCompatActivity() {
 
         reviewsRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                Log.d("TEST", "Getting all cars")
                 if (dataSnapshot.exists()) {
                     for (questionSnapshot in dataSnapshot.children) {
                         val car = questionSnapshot.child("vehicle").value.toString()
@@ -165,6 +167,33 @@ class MainActivity : AppCompatActivity() {
 
             override fun onCancelled(databaseError: DatabaseError) {
             }
+        })
+    }
+
+    private fun fillNotificationList(){
+        notificationList.clear()
+        val auth = FirebaseAuth.getInstance()
+        val uid = auth.currentUser?.uid
+
+        val notificationRef = database.getReference("notifications")
+
+        notificationRef.addValueEventListener(object: ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for(notificationSnapshot in snapshot.children){
+                    val user = notificationSnapshot.child("user").value.toString()
+                    val vehicle = notificationSnapshot.child("vehicle").value.toString()
+
+                    if(user == uid){
+                        notificationList.add(Notification(user,vehicle))
+                    }
+                }
+
+            }
+
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+
         })
     }
 

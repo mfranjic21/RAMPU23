@@ -4,22 +4,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.iznajmljivanjevozila.R
 import com.example.iznajmljivanjevozila.adapters.CarListAdapter
 import com.example.iznajmljivanjevozila.data.Cars
-import com.example.iznajmljivanjevozila.data.Reviews
 import com.example.iznajmljivanjevozila.data.carsList
-import com.example.iznajmljivanjevozila.data.reviewsList
+import com.example.iznajmljivanjevozila.data.notificationList
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
 
 
 class MyReservations : AppCompatActivity(){
@@ -45,7 +39,7 @@ class MyReservations : AppCompatActivity(){
 
         val myReservations = findViewById<RecyclerView>(R.id.myReservationsView)
         myReservations.layoutManager = LinearLayoutManager(this)
-        myReservations.adapter = CarListAdapter(filterCars(), true, this)
+        myReservations.adapter = CarListAdapter(filterCars(), notificationList,true, this)
     }
 
     fun changeLabelEmptyList(){
