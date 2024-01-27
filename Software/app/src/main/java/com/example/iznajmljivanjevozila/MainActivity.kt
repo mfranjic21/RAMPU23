@@ -3,6 +3,7 @@ package com.example.iznajmljivanjevozila
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -10,29 +11,23 @@ import com.example.iznajmljivanjevozila.fragments.Login
 import android.widget.ImageButton
 import android.widget.SearchView
 import android.widget.Spinner
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.iznajmljivanjevozila.adapters.CarListAdapter
 import com.example.iznajmljivanjevozila.data.Cars
-import com.example.iznajmljivanjevozila.data.Questions
 import com.example.iznajmljivanjevozila.data.Reviews
 import com.example.iznajmljivanjevozila.data.User
 import com.example.iznajmljivanjevozila.data.carsList
 import com.example.iznajmljivanjevozila.data.reviewsList
 import com.example.iznajmljivanjevozila.data.userList
 import com.example.iznajmljivanjevozila.fragments.Menu
-import com.example.iznajmljivanjevozila.helpers.MockDataLoader
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
-import com.google.firebase.storage.FirebaseStorage
-import java.util.concurrent.CountDownLatch
 
 class MainActivity : AppCompatActivity() {
     lateinit var database: FirebaseDatabase
@@ -86,6 +81,7 @@ class MainActivity : AppCompatActivity() {
 
         carsRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+
                 if (dataSnapshot.exists()) {
                     for (questionSnapshot in dataSnapshot.children) {
                         val key = questionSnapshot.key.toString()
@@ -117,6 +113,7 @@ class MainActivity : AppCompatActivity() {
 
         reviewsRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+                Log.d("TEST", "Getting all cars")
                 if (dataSnapshot.exists()) {
                     for (questionSnapshot in dataSnapshot.children) {
                         val car = questionSnapshot.child("vehicle").value.toString()
@@ -191,8 +188,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 if(newText == ""){
-                    carsList.clear()
-                    carList.adapter?.notifyDataSetChanged()
+                    fillCars()
                 }
                 return true
             }
@@ -210,6 +206,71 @@ class MainActivity : AppCompatActivity() {
 
         val actualFilter = filter.firstOrNull { it.first == filterType }?.second
 
+        if(actualFilter != null){
+            val vehicleRef = database.getReference("vehicles")
+            val query = vehicleRef.orderByChild(actualFilter)
+
+            query.addValueEventListener(object: ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    Log.d("TEST", "Getting filtered cars")
+                    Log.d("TEST", actualFilter)
+                    val filteredCarsList = mutableListOf<Cars>()
+                    for (vehicleSnapshot in snapshot.children){
+                        val key = vehicleSnapshot.key.toString()
+                        val mark = vehicleSnapshot.child("mark").value.toString()
+                        val model = vehicleSnapshot.child("model").value.toString()
+                        val year = vehicleSnapshot.child("year").value.toString()
+                        val registrationPlate = vehicleSnapshot.child("registrationPlate").value.toString()
+                        val currentMileage = vehicleSnapshot.child("currentMileage").value.toString()
+                        val details = vehicleSnapshot.child("details").value.toString()
+                        val availability = vehicleSnapshot.child("availability").value as Boolean
+                        val reservationUser = vehicleSnapshot.child("reservationUser").value.toString()
+                        val photo = vehicleSnapshot.child("photo").value.toString()
+
+                        val vehicle = Cars(key, mark, model, year, registrationPlate, currentMileage, details, availability, reservationUser, photo)
+
+                        when (actualFilter) {
+                            "mark" -> {
+                                if(vehicle.mark.contains(filterValue, ignoreCase = true)){
+                                    filteredCarsList.add(vehicle)
+                                }
+                            }
+                            "model" -> {
+                                if(vehicle.model.contains(filterValue, ignoreCase = true)){
+                                    filteredCarsList.add(vehicle)
+                                }
+                            }
+                            "year" -> {
+                                if(vehicle.year.contains(filterValue, ignoreCase = true)){
+                                    filteredCarsList.add(vehicle)
+                                }
+                            }
+                            "currentMileage" -> {
+                                val numericValue =
+                                    vehicle.currentMileage.replace("[^\\d]".toRegex(), "")
+                                        .toIntOrNull()
+                                if (numericValue != null && numericValue < filterValue.toInt()) {
+                                    filteredCarsList.add(vehicle)
+                                }
+                            }
+                        }
+                    }
+                    for(car in filteredCarsList){
+                        Log.d("TEST", car.toString())
+                    }
+                    carsList = filteredCarsList
+                    fillCarView()
+                    Log.d("TEST", carsList.toString())
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+            })
+        }
+
+
+        /*
         carsList.retainAll { car ->
             when (actualFilter) {
                 "mark" -> car.mark.contains(filterValue, ignoreCase = true)
@@ -222,7 +283,8 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-        carList.adapter?.notifyDataSetChanged()
+         */
+
     }
 
 }
