@@ -5,15 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.iznajmljivanjevozila.MainActivity
@@ -26,17 +22,11 @@ import com.example.iznajmljivanjevozila.helpers.CarsViewHolder
 import com.example.iznajmljivanjevozila.helpers.VehicleDataUpdate
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import java.text.DecimalFormat
-import java.util.concurrent.CountDownLatch
 
 
 
@@ -44,7 +34,16 @@ class CarListAdapter(private val carsList: List<Cars>, reserve: Boolean = false,
     private val reserved = reserve
     private val review = review ?: false
     private val newCarList = newCarList ?: null
-    private var uid = Firebase.auth.currentUser!!.uid
+    private var uid = checkIfLogged()
+
+    fun checkIfLogged(): String{
+        if(Firebase.auth.currentUser != null){
+            return Firebase.auth.currentUser?.uid  as String
+        }else{
+            return ""
+        }
+    }
+
     private var filteredCarsList: List<Cars> = filterCarsList(uid)
     private var database = com.google.firebase.ktx.Firebase.database("https://iznajmljivanje-vozila-default-rtdb.europe-west1.firebasedatabase.app/")
 

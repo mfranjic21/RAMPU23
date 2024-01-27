@@ -5,23 +5,14 @@ import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.iznajmljivanjevozila.SessionManager
 import com.example.iznajmljivanjevozila.MainActivity
-import com.example.iznajmljivanjevozila.fragments.ProfileConfiguration
 import com.example.iznajmljivanjevozila.R
-import com.example.iznajmljivanjevozila.data.User
-import com.example.iznajmljivanjevozila.fragments.MyReservations
-import com.google.android.gms.tasks.Tasks
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.database
 import com.google.firebase.database.ktx.database
 
 class Menu : AppCompatActivity() {
@@ -30,7 +21,7 @@ class Menu : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.profil)
 
-        var uid = Firebase.auth.currentUser!!.uid
+        val uid = Firebase.auth.currentUser!!.uid
         replacePlaceHolder(uid)
 
         val vracaj = findViewById<ImageButton>(R.id.vrati_nazad)
@@ -47,9 +38,12 @@ class Menu : AppCompatActivity() {
 
         val odjava = findViewById<TextView>(R.id.odjava)
         odjava.setOnClickListener {
+            var auth = FirebaseAuth.getInstance()
+            auth.signOut()
+
             val intent = Intent(this, Login::class.java)
             startActivity(intent)
-            SessionManager.setLoggedIn(false)
+
         }
 
         val podrska = findViewById<TextView>(R.id.podrska)
