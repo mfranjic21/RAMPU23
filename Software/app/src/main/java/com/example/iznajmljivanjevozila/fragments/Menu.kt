@@ -9,7 +9,20 @@ import com.example.iznajmljivanjevozila.SessionManager
 import com.example.iznajmljivanjevozila.MainActivity
 import com.example.iznajmljivanjevozila.fragments.ProfileConfiguration
 import com.example.iznajmljivanjevozila.R
+import com.example.iznajmljivanjevozila.data.User
 import com.example.iznajmljivanjevozila.fragments.MyReservations
+import com.google.android.gms.tasks.Tasks
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.database
+import com.google.firebase.database.ktx.database
 
 class Menu : AppCompatActivity() {
 
@@ -17,9 +30,8 @@ class Menu : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.profil)
 
-        val username = findViewById<TextView>(R.id.ime_prezime)
-        val user = SessionManager.getLoggedUser()
-        username.text = user.lastname+" "+user.firstname
+        var uid = Firebase.auth.currentUser!!.uid
+        replacePlaceHolder(uid)
 
         val vracaj = findViewById<ImageButton>(R.id.vrati_nazad)
         vracaj.setOnClickListener {
@@ -65,4 +77,29 @@ class Menu : AppCompatActivity() {
         }
 
     }
+
+    private fun replacePlaceHolder(uid: String) {
+        val database = com.google.firebase.ktx.Firebase.database("https://iznajmljivanje-vozila-default-rtdb.europe-west1.firebasedatabase.app/")
+        val activeUser = database.getReference("users")
+        val username = findViewById<TextView>(R.id.ime_prezime)
+
+        val valueEventListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    val firstName = dataSnapshot.child("firstname").value.toString()
+                    val lastName = dataSnapshot.child("lastname").value.toString()
+
+                    username.text = "$firstName $lastName"
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+            }
+        }
+
+        activeUser.child(uid).addValueEventListener(valueEventListener)
+    }
+
+
+
 }
