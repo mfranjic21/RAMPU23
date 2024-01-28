@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.iznajmljivanjevozila"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -61,6 +61,11 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation ("com.google.firebase:firebase-auth:22.3.1")
     implementation ("com.google.firebase:firebase-database-ktx:20.3.0")
+    implementation ("com.google.firebase:firebase-messaging:23.4.0")
+
+    implementation ("androidx.activity:activity-ktx:1.8.2")
+
+
     implementation ("com.github.bumptech.glide:glide:4.12.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
