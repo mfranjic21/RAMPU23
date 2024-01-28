@@ -91,11 +91,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun fillCars() {
-        carsList.clear()
         val carsRef = database.getReference("vehicles")
 
-        carsRef.addValueEventListener(object : ValueEventListener {
+        carsRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+                carsList.clear()
 
                 if (dataSnapshot.exists()) {
                     for (questionSnapshot in dataSnapshot.children) {
@@ -123,11 +123,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun fillReviewsList() {
-        reviewsList.clear()
         val reviewsRef = database.getReference("reviews")
 
         reviewsRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+                reviewsList.clear()
                 if (dataSnapshot.exists()) {
                     for (questionSnapshot in dataSnapshot.children) {
                         val car = questionSnapshot.child("vehicle").value.toString()
@@ -147,11 +147,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun fillUserList() {
-        userList.clear()
         val usersRef = database.getReference("users")
 
         usersRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+                userList.clear()
                 if (dataSnapshot.exists()) {
                     for (questionSnapshot in dataSnapshot.children) {
                         val firstname = questionSnapshot.child("firstname").value.toString()

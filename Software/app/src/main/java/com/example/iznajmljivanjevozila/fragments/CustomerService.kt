@@ -35,7 +35,6 @@ class CustomerService : AppCompatActivity() {
         var uid = Firebase.auth.currentUser!!.uid
 
         loadQuestions(uid)
-        fillView()
 
         val natragButton = findViewById<ImageButton>(R.id.btnBack)
         val faqButton = findViewById<Button>(R.id.faq)
@@ -86,7 +85,7 @@ class CustomerService : AppCompatActivity() {
     private fun loadQuestionsSeparate(typeOfQuestions: String, uid: String) {
         val questionsRef = database.getReference(typeOfQuestions)
 
-        questionsRef.addValueEventListener(object : ValueEventListener {
+        questionsRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for (questionSnapshot in dataSnapshot.children) {
@@ -101,6 +100,8 @@ class CustomerService : AppCompatActivity() {
                             faqList.add(Questions(question, answer))
                         }
                     }
+
+                    fillView()
                 }
             }
 
@@ -134,8 +135,7 @@ class CustomerService : AppCompatActivity() {
             questionsRef.child(newQuestionKey).setValue(questionData)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        yourQuestions.clear()
-                        loadQuestionsSeparate("personalquestions", uid)
+                        yourQuestions.add(Questions(question, "Čeka se odgovor administratora"))
                         RefreshList(yourQuestions)
                     } else {
                     }
