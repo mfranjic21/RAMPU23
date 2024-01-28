@@ -218,24 +218,17 @@ class CarListAdapter(private val carsList: List<Cars>, private val notificationL
     }
 
     private fun filterCarsList(uid: String): List<Cars> {
-        var filterList = removeDuplicates(carsList)
         return if (review && newCarList!!.isNotEmpty()) {
-            removeDuplicates(newCarList)
+            newCarList
         } else if (!reserved) {
-            filterList
+            carsList
         } else {
-            filterList.filter { it.reservationUser == uid }
+            carsList.filter { it.reservationUser == uid }
         }
-    }
-
-    fun <Cars> removeDuplicates(inputList: List<Cars>): List<Cars> {
-        val set = LinkedHashSet(inputList)
-        return ArrayList(set)
     }
 
 
     override fun getItemCount(): Int {
-        Log.d("Error","${filteredCarsList.size}")
         return filteredCarsList.size
     }
 
